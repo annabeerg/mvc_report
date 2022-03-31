@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Placement/main */
+
+main {
+    height: 100%;
+    max-width: 67%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+    margin: 0 auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: lightgrey;
+}
+
+/* Header/Footer */
+
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #cf8531;
+    color: white;
+    font-size: 30px;
+}
+
+
+footer {
+    font-style: oblique;
+    color: #111;
+    padding-top: 2em;
+    margin-top: 2em;
+    margin-bottom: 0em;
+    background-color: #cf8531;
+    padding-bottom: 2em;
+    padding-left: 0.5em;
+}
+
+/* Navbar */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+/* Page Content */
+.content {
+    padding:20px;
+}
+
+/* Typografi */
+
+p {
+    line-height: 2;
+}
+
+h2 {
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+img {
+    float: right;
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}

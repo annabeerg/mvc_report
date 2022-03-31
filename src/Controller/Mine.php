@@ -19,7 +19,7 @@ class Mine extends AbstractController
         return $this->render('me.html.twig', [
             'name' => 'Anna Berg',
             'age' => 24,
-            'about' => 'Så, en presentation en bra början. Skriv några ord om själv då.
+            'about' => 'Så, en presentation en bra början. Så jag skriver några rader om mig själv..
             Född och uppvuxen i Dalarna, Jag har alltid idrottat på elit nivå men efter skador fick jag lägga den karriären i en skolåda på vinden. 
             Jag har läst flera kurser inom journalistik och litteraturvetenskap, vilket jag alltid tänkt passar mig bäst. Men så blev det inte när jag väl studerat länge och kände att det ej passade mig längre. 
             Så efter flera år i olika jobb landade jag här. Idag bor jag med min sambo och hund kvar i Dalarna, nära till naturen.',
