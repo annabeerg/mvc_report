@@ -14,9 +14,9 @@
             <div id="sidebar">
                 {% block sidebar %}
                     <ul>
-                        <li><a href="/">Hem</a></li>
-                        <li><a href="/about">Om</a></li>
-                        <li><a href="/report">Rapport</a></li>
+                        <li><a href="{{ url("home") }}">Hem</a></li>
+                        <li><a href="{{ path("about") }}">Om</a></li>
+                        <li><a href="{{ path("report") }}">Rapport</a></li>
                     </ul>
                 {% endblock %}
             </div>

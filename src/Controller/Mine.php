@@ -11,7 +11,7 @@ class Mine extends AbstractController
 {
 
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      */
     public function HomePage(): Response
     {
@@ -28,7 +28,7 @@ class Mine extends AbstractController
 
 
     /**
-     * @Route("/about")
+     * @Route("/about", name="about")
      */
     public function About(): Response
     {
@@ -43,7 +43,7 @@ class Mine extends AbstractController
 
 
     /**
-     * @Route("/report")
+     * @Route("/report", name="report")
      */
     public function Report(): Response
     {
