@@ -1,0 +1,26 @@
+{% include 'main.html.twig' %}
+
+<body>
+
+    <div class="content">
+        <h2>Cards</h2>
+
+        <div>
+            {% block navbar %}
+                <ul class="cardlist">
+                    <li class="cardlister"><a href="{{ path("deck") }}">Kortlek</a></li>
+                    <li class="cardlister"><a href="{{ path("shuffle") }}">Blanda kortlek</a></li>
+                    <li class="cardlister"><a href="{{ path("draw") }}">Dra slumpmässigt kort</a></li>
+                    <li class="cardlister"><a href="{{ path("number") }}">Kort vid nummer</a></li>
+                    <li class="cardlister"><a href="{{ path("player") }}">Dela hög till spelare</a></li>
+                    <li class="cardlister"><a href="{{ path("deck2") }}">Deck 2</a></li>
+                    <li class="cardlister"><a href="{{ path("api") }}">JSON API</a></li>
+                    <li class="cardlister"><a href="{{ path("documentation") }}">Dokumentation</a></li>
+                </ul>
+            {% endblock %}
+        </div>
+    </div>
+    
+</body>
+
+{% include 'footer.html.twig' %}

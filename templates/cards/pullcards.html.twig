@@ -1,0 +1,28 @@
+{% include 'main.html.twig' %}
+
+
+<body>
+
+    <div class="content">
+        <form method="post">
+            <fieldset>
+            <legend>A dice hand</legend>
+
+            <button>
+                <input type="submit" name="roll" value="Roll">
+            </button>
+            <button>
+                <input type="submit" name="clear" value="Clear">
+            </button>
+
+            <p>Cards left: {{ amount }}</p>
+            <img class="cards" src="{{ asset(hand) }}" alt="two of hearts">
+
+            </fieldset>
+        </form>
+        
+    </div>
+    
+</body>
+
+{% include 'footer.html.twig' %}

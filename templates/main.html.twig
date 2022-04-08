@@ -4,19 +4,20 @@
         <head>
             <meta charset="UTF-8">
             <title>{% block title %}anbj21{% endblock %}</title>
-            <link rel="stylesheet" href="css/style.css"/>
+            <link rel="stylesheet" href="{{ asset("css/style.css") }}"/>
         </head>
         <header>
             <div class="header">
                 <h1>Välkommen till mitt Ramverk!<h1>
             </div>
 
-            <div id="sidebar">
-                {% block sidebar %}
-                    <ul>
-                        <li><a href="{{ url("home") }}">Hem</a></li>
-                        <li><a href="{{ path("about") }}">Om</a></li>
-                        <li><a href="{{ path("report") }}">Rapport</a></li>
+            <div id="navbar">
+                {% block navbar %}
+                    <ul class="nav">
+                        <li class="navlist"><a href="{{ url("home") }}">Hem</a></li>
+                        <li class="navlist"><a href="{{ path("card") }}">Card</a>
+                        <li class="navlist"><a href="{{ path("about") }}">Om</a></li>
+                        <li class="navlist"><a href="{{ path("report") }}">Rapport</a></li>
                     </ul>
                 {% endblock %}
             </div>

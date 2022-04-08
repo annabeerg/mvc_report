@@ -1,0 +1,53 @@
+{% include 'main.html.twig' %}
+
+<body>
+
+    <div class="content">
+        <h2>Dokumentation Kortspel 21</h2>
+        <img class="about" src="{{ asset('images/flow.png') }}" alt="Picture from hike" width="600" height="700">
+        <p>
+        
+        Person <br>
+            Personen trycker på start knappen, POST.
+        <br>
+        <br>
+        Klass GameBoard <br>
+            Hanterar resultat.
+            Routen fångar upp GET. Initierar ett Game objekt och kallar på metoden starthands i klassen Game.
+        <br>
+        <br>
+        Klass Game <br>
+            Beskriver spelkomponenterana.
+            Två spelare skapas och två Hand objekt skapas. Metoden add initieras i Hand.
+        <br>
+        <br>
+        Klassen Hand <br>
+            Innehåller handen av kort.
+            Hand skapar ett CardGraphic objekt och initierar metoden getter i CardGraphic.
+        <br>
+        <br>
+        Klassen CardGraphic <br>
+            Beskriver kortet.
+            Beroende på randomvärde i value, hämtas representationen beroende av indexpositionen value. Returnerar representationen.
+        <br>
+        <br>
+        Hand igen <br>
+            Fångar upp returnvalue. Genom en if, else sats kollas värdet av representationen mot en array i Hand klassen. 
+            Om värdet inte finns returneras card. Annars initieras ett nyss CardGraphic objekt och returnerande värdet kollas igen.
+        <br>
+        <br>
+        Game igen <br>
+            Returnerar hand.
+        <br>
+        <br>
+        GameBoard igen <br>
+            Kollar värdet från Game, beroende på namn sätts variabeln points till ett värde. Värdet sparas i session. Om värdet är över 21,
+            avslutas spelet och avslutande resultat returneras. Annars returneras points, card och totalpoints från session till användaren.
+
+        
+        </p>
+    </div>
+    
+</body>
+
+{% include 'footer.html.twig' %}

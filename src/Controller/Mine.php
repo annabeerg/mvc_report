@@ -9,13 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class Mine extends AbstractController
 {
-
     /**
      * @Route("/", name="home")
      */
     public function HomePage(): Response
     {
-
         return $this->render('me.html.twig', [
             'name' => 'Anna Berg',
             'age' => 24,

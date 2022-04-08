@@ -48,7 +48,7 @@ footer {
 
 /* Navbar */
 
-ul {
+.nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -56,11 +56,11 @@ ul {
     background-color: #333;
 }
 
-li {
+.navlist {
     float: left;
 }
 
-li a {
+.navlist a {
     display: block;
     color: white;
     text-align: center;
@@ -68,7 +68,7 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
+.navlist a:hover {
     background-color: #111;
 }
 
@@ -88,11 +88,56 @@ h2 {
     padding-bottom: 1em;
 }
 
-img {
+.about {
     float: right;
     display: block;
     position: relative;
     width: 100%;
     max-width: 600px;
     height: auto;
+}
+
+.cards {
+    width: 120px;
+    height: 170px;
+}
+
+.cardlist {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    max-width: 1000px;
+    justify-content: space-between;
+    text-align: center;
+    list-style-type: none;
+}
+
+.cardlister {
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.cardlister a {
+    text-decoration: none;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.cardlister:hover {
+    background-image: url('https://assets.webiconspng.com/uploads/2017/09/Buttons-PNG-Image-37238.png');
+    background-size: 100% 100%;
+    animation: spring 300ms ease-out;
+    text-shadow: 0 -1px 0 #bb9b6e;
+    font-weight: bold;
+}
+
+.cardlister:active {
+    transform: translateY(4px);
+}
+
+.space {
+    display: block;
+    margin-bottom: 30px;
+    padding: 5px;
+    border: #000000 solid;
 }
