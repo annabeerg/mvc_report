@@ -1,0 +1,28 @@
+{% include 'main.html.twig' %}
+
+<body>
+
+    <div class="content">
+        <h2>Kortspel 21</h2>
+
+        <div class="btn-group">
+            <a class="button" href="{{ path("game") }}">Starta spelet</a>
+        </div>
+
+        <div>
+            <p>
+            Meningen med kortspelet 21 är att slå datorns hand utan att komma över summan 21.
+            <br>
+            Värderna per kurs är som siffran på korten 2-10. Ess är värd en poäng, knäckt 11 poäng, dam 12 poäng och kunden 13 poäng.
+            <br>
+            Varje spelare får ett kort vid start, sedan ges kort beroende på om du hit - får ett kort och stand - stannar din omgång. Om du stannar kan fortfarande datorn spela vidare och få kort.
+            <br>
+            Om du går över 21 i summa förlorar du. Om datorn går över 21, vinner du. Får någon 21, vinner denne. Om ni båda får summan 21 vinner datorn.
+            Kortfattat: Kom så nära summan 21 som möjligt, men går du över 21 förlorar du oavsett summa.
+            </p>
+        </div>
+    </div>
+    
+</body>
+
+{% include 'footer.html.twig' %}

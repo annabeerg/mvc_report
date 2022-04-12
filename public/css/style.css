@@ -141,3 +141,61 @@ h2 {
     padding: 5px;
     border: #000000 solid;
 }
+
+.btn-group .button {
+    text-decoration: none;
+    background-color: #04AA6D; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    margin-bottom: 2em;
+}
+
+  /* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+  /* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #3e8e41;
+}
+
+.players {
+    background-color: burlywood;
+    min-height: 200px;
+    width: 100%;
+    margin-bottom: 2em;
+    padding: 0.5em;
+    display: block;
+}
+
+.players1 {
+    border: #000000 2px solid;
+    width: 49.5%;
+    min-height: 180px;
+    display: inline-block;
+}
+
+.players2 {
+    border: #000000 2px solid;
+    width: 49.5%;
+    min-height: 180px;
+    display: inline-block;
+}
+
+h3 {
+    text-align: center;
+}
+
+.cardsplay{
+    width: 50%;
+}

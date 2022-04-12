@@ -1,0 +1,49 @@
+{% include 'main.html.twig' %}
+
+<body>
+
+    <div class="content">
+        <h2>Kortspel 21</h2>
+
+            {% if winner != "empty" %}
+                <h3>{{ winner }}</h3> 
+                <p style="text-align: center;">Press "Hit", to play again.</p>
+            {% endif %}
+
+            <form method="post">
+                <fieldset>
+                    <button>
+                        <input type="submit" name="hit" value="Hit">
+                    </button>
+                    <button>
+                        <input type="submit" name="stand" value="Stand">
+                    </button>
+                    <button>
+                        <input type="submit" name="new" value="New Round">
+                    </button>
+                    <button style="float: right; padding: 1em;">
+                        <input type="submit" name="game" value="New Game">
+                    </button>
+                </fieldset>
+            </form>
+
+            <div class ="players">
+                <div class ="players1">
+                    <h3>Your points: {{ points1 }}</h3>
+                    <img class="cardsplay" src="{{ (hand1) }}" alt="two of hearts">
+                </div>
+                <div class ="players2">
+                    <h3>Computers points: {{ points2 }}</h3>
+                    <img class="cardsplay" src="{{ (hand2) }}" alt="two of hearts">
+                </div>
+            </div>
+            <div>
+            <h3> Game statistics:</h3>
+            <h4>You have won: {{ playerone }} times</h4>
+            <h4>Computer has won: {{ playertwo }} times</h4>
+            </div>
+    </div>
+    
+</body>
+
+{% include 'footer.html.twig' %}
