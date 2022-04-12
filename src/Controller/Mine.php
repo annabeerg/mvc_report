@@ -69,7 +69,14 @@ class Mine extends AbstractController
             Istället fångades korten upp i en lista likt dice. 
             Jag tyckte att det var bra att implementera ett flöderdiagram för att börja med nästa veckas uppgift. Det gjorde att en tydlig struktur redan finns och nästa veckas problemlösning redan har tagit tre steg än att börja
             från ruta ett nästa vecka.',
-            'kmom3' => 'Skriv här',
+            'kmom3' => 'Jag tyckte att det var kul att modellera ett kortspel utifrån arbetet från förra veckan. Det tro jag hjälpte mig enormt i mitt arbete denna vecka. Jag tyckte att det kändes tryggt,
+            tydligt och jag hade en plan som jag kunde följa och som fungerade. Det kändes både tryggt och roligt när man lyckas med sin plan och det visar att man har kommit långt under denna utbildning. 
+            Jag utgick från min plan från förra veckan. Jag hade ett flödesdiagram jag kunde luta mig tillbaka på och sedan hade jag min pseudo kod. Jag följde nästan min plan. Jag började med att bygga upp en struktur i min templete, 
+            en tydlig bild av vad som behövdes utifrån den dokumentation jag hade gjort. Jag insåg att jag behövde strukturera mina get och post och vart jag kunde tänkas behövde värden från session och vart jag behövde sätta värden i session. 
+            Sedan använde jag klasserna från förra veckan utöver en ny klass i controller, game och en ny klass gamechecker i mappen gamechecker. Denna klass behövde jag för att kunna få veta vilket poäng korten var. 
+            Sedan hämtade korten för antal spelare och såg till att korten alltid var begränsade till en kortlek. Sedan skapade jag dem tre knapparna: hit, stand och new round. Det var dem knapparna jag kunde tänka mig behövas för att spelaren 
+            kunde utföra spelet. Sedan byggde jag upp enligt värde på korten, sparade värden i session för att kunna hämta. Hela processen gick smidigt och var väldigt roligt. Jag gillar att jobba i symfony, i början tyckte jag att den var svår, 
+            men efter första veckan tycker jag om det. Denna TIL för denna vecka är att se till att jag jobbar mer enligt planen, den fungerar ofta.',
             'kmom4' => 'Skriv här',
             'kmom5' => 'Skriv här',
             'kmom6' => 'Skriv här',
