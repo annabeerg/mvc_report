@@ -7,6 +7,7 @@ use App\Card\Card;
 class CardHand
 {
     protected $hand = [];
+    protected $list = [];
 
     public function set($card): void
     {
@@ -17,7 +18,6 @@ class CardHand
 
     public function get(): array
     {
-        global $list;
         foreach ($this->hand as $finger) {
             $this->list[] = $finger;
         }

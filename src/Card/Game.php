@@ -15,9 +15,8 @@ class Game
     {
         if (($number - 1) >= count($this->players)) {
             return $this->players[$number];
-        } else {
-            return "No such player";
         }
+        return "No such player";
     }
 
     public function setplayers($players): void
@@ -31,7 +30,6 @@ class Game
 
     public function sethands($number): void
     {
-        global $value;
         $hand = new CardHand();
         for ($i = 0; $i <= $number - 1; $i++) {
             $value = $this->cards->add();

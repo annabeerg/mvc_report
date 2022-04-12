@@ -6,6 +6,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
+use \App\Card\CardGraphicJoker;
+use \App\Card\Hand;
+
 class Json
 {
     /**
@@ -17,15 +20,14 @@ class Json
      */
     public function api(): Response
     {
-        $hand = new \App\Card\Hand();
         $json = [];
 
-        $die = new \App\Card\CardGraphicJoker();
+        $die = new CardGraphicJoker();
 
-        $i = 0;
-        while ($i <= 53) {
-            $json[] = "{$die->getname($i)}";
-            $i = $i + 1;
+        $count = 0;
+        while ($count <= 53) {
+            $json[] = "{$die->getname($count)}";
+            $count = $count + 1;
         }
 
         $data = [

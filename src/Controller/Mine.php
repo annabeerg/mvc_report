@@ -12,7 +12,7 @@ class Mine extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function HomePage(): Response
+    public function homePage(): Response
     {
         return $this->render('me.html.twig', [
             'name' => 'Anna Berg',
@@ -28,7 +28,7 @@ class Mine extends AbstractController
     /**
      * @Route("/about", name="about")
      */
-    public function About(): Response
+    public function about(): Response
     {
         return $this->render('about.html.twig', [
             'kursnamn' => 'Objektorienterade webbteknologier',
@@ -43,7 +43,7 @@ class Mine extends AbstractController
     /**
      * @Route("/report", name="report")
      */
-    public function Report(): Response
+    public function report(): Response
     {
         return $this->render('report.html.twig', [
             'kmom1' => 'Jag har precis tidigare avslutat kursen objektorienterad python. Jag upplever verkligen att den kursen har hjälpt med förståelsen av objektorientering överlag.

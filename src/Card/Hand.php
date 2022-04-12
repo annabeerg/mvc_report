@@ -15,22 +15,20 @@ class Hand
     {
         if (! in_array($die, $this->deck)) {
             $this->deck[] = $die;
-        } else {
-            $this->roll(new CardGraphic());
         }
+        $this->roll(new CardGraphic());
     }
 
     public function showJoker()
     {
         global $die;
-        global $value;
 
         $die = new CardGraphicJoker();
 
-        $i = 1;
-        while ($i <= 54) {
-            $this->deck[] = $die->getter($i);
-            $i = $i + 1;
+        $count = 1;
+        while ($count <= 54) {
+            $this->deck[] = $die->getter($count);
+            $count = $count + 1;
         }
 
         return $this->deck;
@@ -39,14 +37,13 @@ class Hand
     public function show()
     {
         global $die;
-        global $value;
 
         $die = new CardGraphic();
 
-        $i = 0;
-        while ($i <= 51) {
-            $this->deck[] = $die->getter($i);
-            $i = $i + 1;
+        $count = 0;
+        while ($count <= 51) {
+            $this->deck[] = $die->getter($count);
+            $count = $count + 1;
         }
 
         return $this->deck;
@@ -61,7 +58,7 @@ class Hand
         if (! in_array($die, $this->hand)) {
             $this->hand[] = $die;
             $this->card = $die->getAsString();
-        } else {
+        } elseif (in_array($die, $this->hand)) {
             $this->add(new CardGraphic());
         }
     }
@@ -77,7 +74,7 @@ class Hand
         if (! in_array($value, $this->hand)) {
             $this->hand[] = $die;
             $this->card = $die->getAsString();
-        } else {
+        } elseif (in_array($value, $this->hand)) {
             $this->add(new CardGraphic());
         }
     }
@@ -113,7 +110,6 @@ class Hand
 
     public function getAsString(): array
     {
-        global $list;
         foreach ($this->deck as $die) {
             $this->list[] = $die->getAsString();
         }

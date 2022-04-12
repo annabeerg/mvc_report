@@ -9,14 +9,17 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+use App\Card\Card;
+use App\Card\Hand;
+use \App\Card\CardGraphic;
+use \App\Card\Game;
+
 class Cards extends AbstractController
 {
-    private $lister = [];
-
     /**
      * @Route("/card", name="card")
      */
-    public function Card(): Response
+    public function card(): Response
     {
         return $this->render('cards/card.html.twig');
     }
@@ -25,9 +28,9 @@ class Cards extends AbstractController
     /**
      * @Route("/card/deck", name="deck")
      */
-    public function Deck(): Response
+    public function deck(): Response
     {
-        $hand = new \App\Card\Hand();
+        $hand = new Hand();
         $value = $hand->show();
 
         $data = [
@@ -40,18 +43,15 @@ class Cards extends AbstractController
     /**
      * @Route("/card/deck/shuffle", name="shuffle")
      */
-    public function Shuffle(): Response
+    public function shuffle(): Response
     {
-        $hand = new \App\Card\Hand();
+        $hand = new Hand();
 
-        $i = 1;
-        while ($i <= 52) {
-            $hand->roll(new \App\Card\CardGraphic());
-            $i = $i + 1;
-        }
+        $value = $hand->show();
+        shuffle($value);
 
         $data = [
-            'hand' => $hand->getAsString()
+            'hand' => $value
         ];
 
         return $this->render('cards/cardgame.html.twig', $data);
@@ -64,7 +64,7 @@ class Cards extends AbstractController
      *      methods={"GET","HEAD"}
      * )
      */
-    public function Draw(): Response
+    public function draw(): Response
     {
         return $this->render('cards/pullcard.html.twig');
     }
@@ -80,13 +80,13 @@ class Cards extends AbstractController
         Request $request,
         SessionInterface $session
     ): Response {
-        $hand = $session->get("cards/cardhand") ?? new \App\Card\Hand();
+        $hand = $session->get("cards/cardhand") ?? new Hand();
 
         $roll  = $request->request->get('roll');
         $clear = $request->request->get('clear');
 
         if ($roll) {
-            $hand->add(new \App\Card\CardGraphic());
+            $hand->add(new CardGraphic());
 
             $session->set("cardhand", $hand);
             global $counter;
@@ -98,7 +98,7 @@ class Cards extends AbstractController
             ];
             return $this->render('cards/pullcards.html.twig', $data);
         } elseif ($clear) {
-            $hand = new \App\Card\Hand();
+            $hand = new Hand();
             $session->set("cardhand", $hand);
 
             return $this->redirectToRoute('draw');
@@ -112,7 +112,7 @@ class Cards extends AbstractController
      *      methods={"HEAD", "GET"}
      * )
      */
-    public function Number(): Response
+    public function number(): Response
     {
         return $this->render('cards/empty.html.twig');
     }
@@ -125,11 +125,10 @@ class Cards extends AbstractController
      * )
      */
     public function processer(
-        Request $request,
         SessionInterface $session,
         $number = 1
     ): Response {
-        $hand = $session->get("cards/cardhand") ?? new \App\Card\Hand();
+        $hand = $session->get("cards/cardhand") ?? new Hand();
 
         $hand->sethand($number);
 
@@ -152,7 +151,7 @@ class Cards extends AbstractController
      *      methods={"HEAD", "GET"}
      * )
      */
-    public function Players(): Response
+    public function players(): Response
     {
         return $this->render('cards/empty.html.twig');
     }
@@ -165,22 +164,17 @@ class Cards extends AbstractController
      * )
      */
     public function processor(
-        Request $request,
-        SessionInterface $session,
         $players = 2,
         $cards = 5
     ): Response {
         if (($cards * $players) > 52) {
             return $this->render('cards/empty.html.twig');
-        } else {
-            $game = new \App\Card\Game();
+        } elseif (($cards * $players) < 52) {
+            $game = new Game();
 
             $gamer = $game->starthands($players, $cards);
 
-            global $counter;
-
             $data = [
-                'amount' => $counter,
                 'hand' => $gamer
             ];
             return $this->render('cards/game.html.twig', $data);
@@ -190,9 +184,9 @@ class Cards extends AbstractController
     /**
      * @Route("/card/deck2", name="deck2")
      */
-    public function Deck2(): Response
+    public function deck2(): Response
     {
-        $hand = new \App\Card\Hand();
+        $hand = new Hand();
         $value = $hand->showJoker();
 
         $data = [
