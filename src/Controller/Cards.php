@@ -11,8 +11,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use App\Card\Card;
 use App\Card\Hand;
-use \App\Card\CardGraphic;
-use \App\Card\Game;
+use App\Card\CardGraphic;
+use App\Card\Game;
 
 class Cards extends AbstractController
 {

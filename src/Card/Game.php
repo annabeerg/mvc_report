@@ -11,14 +11,6 @@ class Game
     protected $allplayingcards = [];
     protected $cards;
 
-    public function get($number): array
-    {
-        if (($number - 1) >= count($this->players)) {
-            return $this->players[$number];
-        }
-        return "No such player";
-    }
-
     public function setplayers($players): void
     {
         for ($x = 0; $x <= $players; $x++) {

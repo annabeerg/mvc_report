@@ -10,4 +10,9 @@ class Players
     {
         $this->player = $play;
     }
+
+    public function get()
+    {
+        return $this->player;
+    }
 }

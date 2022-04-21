@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Card;
+namespace App\GameCheck;
 
 class GameCheck
 {
@@ -10,13 +10,13 @@ class GameCheck
         $holder = 1;
         foreach ($value as $letter) {
             if ($letter == "j") {
-                return 11;
+                $holder = 11;
             } elseif ($letter == "q") {
-                return 12;
+                $holder = 12;
             } elseif ($letter == "k") {
-                return 13;
-            }  elseif ($letter == "1") {
-                return 10;
+                $holder = 13;
+            } elseif ($letter == "1") {
+                $holder = 10;
             }
             $holder = $this->getters($letter, $holder);
         }

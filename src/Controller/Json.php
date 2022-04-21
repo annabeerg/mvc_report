@@ -6,8 +6,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-use \App\Card\CardGraphicJoker;
-use \App\Card\Hand;
+use App\Card\CardGraphicJoker;
+use App\Card\Hand;
 
 class Json
 {
