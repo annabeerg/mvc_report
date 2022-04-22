@@ -2,8 +2,17 @@
 
 namespace App\GameCheck;
 
+/**
+ * Class GameCheck
+ */
+
 class GameCheck
 {
+    /**
+     * Method getter.
+     * Checks if variable name to set value holder.
+     * @return returns variable holder
+     */
     public function getter($name)
     {
         $value = str_split($name);
@@ -23,6 +32,11 @@ class GameCheck
         return $holder;
     }
 
+    /**
+     * Method getters.
+     * Checks if variable name to set value holder.
+     * @return returns variable holder
+     */
     public function getters($letter, $holder)
     {
         if ($letter == "2") {

@@ -4,6 +4,10 @@ namespace App\Card;
 
 use App\Card\Card;
 
+/**
+ * Class Game
+ */
+
 class Game
 {
     protected $players = [];
@@ -11,6 +15,9 @@ class Game
     protected $allplayingcards = [];
     protected $cards;
 
+    /**
+     * Method setplayers. Set Player objects.
+     */
     public function setplayers($players): void
     {
         for ($x = 0; $x <= $players; $x++) {
@@ -20,6 +27,9 @@ class Game
         }
     }
 
+    /**
+     * Method sethands. Sets hand objects with cards.
+     */
     public function sethands($number): void
     {
         $hand = new CardHand();
@@ -31,6 +41,10 @@ class Game
         array_push($this->hands, $handler);
     }
 
+    /**
+     * Method getcards. Set varieble sethands with hand objects from players. 
+     * @return string from addhand method.
+     */
     public function getcards($players, $number): void
     {
         $this->cards = new Hand();
@@ -40,12 +54,21 @@ class Game
         }
     }
 
+    /**
+     * Method starthands.
+     * Sets getcards method.
+     * @return variable hands
+     */
     public function starthands($players, $number)
     {
         $this->getcards($players, $number);
         return $this->hands;
     }
 
+    /**
+     * Method getAsString
+     * @return string players
+     */
     public function getAsString(): string
     {
         return "[{$this->players}]";

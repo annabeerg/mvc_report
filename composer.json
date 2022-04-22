@@ -111,7 +111,8 @@
         "phpunit": [
             "@putenv XDEBUG_MODE=coverage",
             "php bin/phpunit"
-        ]
+        ],
+        "phpdoc": "tools/phpdoc/phpdoc"
     },
     "conflict": {
         "symfony/symfony": "*"

@@ -2,6 +2,10 @@
 
 namespace App\Card;
 
+/**
+ * Class CardGraphic extends class Card
+ */
+
 class CardGraphic extends Card
 {
     private $representation = [
@@ -114,22 +118,43 @@ class CardGraphic extends Card
         "ace of spades",
     ];
 
+    
+    /**
+     * Method constuctor from parent class Card. 
+     */
 
     public function __construct()
     {
         parent::__construct();
     }
 
+    /**
+     * Method getter
+     * @param int
+     * @return representation at index position $number
+     * @param return string
+     */
     public function getter($number)
     {
         return $this->representation[$number];
     }
 
+    /**
+     * Method getname
+     * @param int
+     * @return name at index position $number
+     * @param return string
+     */
     public function getname($number)
     {
         return $this->name[$number];
     }
 
+    /**
+     * Method getAsString
+     * @return representation at index position value.
+     * @param return string
+     */
     public function getAsString(): string
     {
         return $this->representation[$this->value - 1];
