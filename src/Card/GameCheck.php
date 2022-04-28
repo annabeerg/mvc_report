@@ -1,6 +1,6 @@
 <?php
 
-namespace App\GameCheck;
+namespace App\Card;
 
 /**
  * Class GameCheck

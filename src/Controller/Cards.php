@@ -81,6 +81,7 @@ class Cards extends AbstractController
         SessionInterface $session
     ): Response {
         $hand = $session->get("cards/cardhand") ?? new Hand();
+        $count = $session->get("counter") ?? 52;
 
         $roll  = $request->request->get('roll');
         $clear = $request->request->get('clear');
@@ -90,7 +91,8 @@ class Cards extends AbstractController
 
             $session->set("cardhand", $hand);
             global $counter;
-            $counter = 52 - $hand->getNumberDices();
+            $session->set("counter", $count - 1);
+            $counter = $session->get("counter");
 
             $data = [
                 'amount' => $counter,
@@ -100,6 +102,7 @@ class Cards extends AbstractController
         } elseif ($clear) {
             $hand = new Hand();
             $session->set("cardhand", $hand);
+            $session->set("counter", 52);
 
             return $this->redirectToRoute('draw');
         }

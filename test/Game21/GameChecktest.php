@@ -1,6 +1,6 @@
 <?php
 
-namespace App\GameCheck;
+namespace App\Card;
 
 use PHPUnit\Framework\TestCase;
 
