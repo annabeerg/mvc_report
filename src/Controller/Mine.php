@@ -77,7 +77,13 @@ class Mine extends AbstractController
             Sedan hämtade korten för antal spelare och såg till att korten alltid var begränsade till en kortlek. Sedan skapade jag dem tre knapparna: hit, stand och new round. Det var dem knapparna jag kunde tänka mig behövas för att spelaren 
             kunde utföra spelet. Sedan byggde jag upp enligt värde på korten, sparade värden i session för att kunna hämta. Hela processen gick smidigt och var väldigt roligt. Jag gillar att jobba i symfony, i början tyckte jag att den var svår, 
             men efter första veckan tycker jag om det. Denna TIL för denna vecka är att se till att jag jobbar mer enligt planen, den fungerar ofta.',
-            'kmom4' => 'Skriv här',
+            'kmom4' => 'Jag tyckte att det var roligt att skreva phpunit tester. Själva testningen påminner om enhetsterstesterna i python. Roligt och alltid lärorikt att jobba med. Det är ett bra sätt att se på sin kod från en annan vinkel än 
+            när man skriver den för funktionlitetens skull. Man kan gott och väl upptäcka onödiga omvägar och få en renare kod genom att endast se på koden från ett annat håll. Tyvärr fungerar inte composer phpunit för mig som jag pratat om i
+            discord med Marie och Mikael därav har jag fått lov att använda: XDEBUG_MODE=coverage bin/phpunit --coverage-text test/Game21 och specificera filen som ska testat för det fungerade ej för mig att testa hela mappen. Men överlag i alla
+            ternerna ligger jag på snitt 80-90 procent kodtäckning. Någon på mindre. Det var roligt att förstå hur kodtäckningen fungerar, att den berättar kodtäckning på antal rader som är "lästa", vilka rader som testet har gått igenom.
+            Jag upplever att alla metoder i min kod inte är testbara. Genom att vissa endast sätter variablar eller appendar arrays och vi inte gått igenom mockning så kändes dem svåra. Men genom att jag ofta skrev metoder som "går igenom" dem
+            metoderna och sedan returnerar ett värde så kan en metod täcka flera metoder. Vilket är synd för man vill ändå testa specifika metoder som inte har en return. Kan tycker att testbar kod absolut är snyggare kod! Mitt TIL för denna
+            vecka är att bli bättre på att kontinuerligt dokumentera. Det behöver jag verkligen bli bättre på. ',
             'kmom5' => 'Jag tyckte att det gick väldigt bra att jobba igenom veckans övning. Lite klurigt att komma igång eftersom jag missade tisdagens föreläsning och sen när det inte gick att se den i efterhand. Tor att det hade underlättat 
             mycket att komma igång med övningen och uppgiften. Det var ingenting speciellt jag reagerade på under övningen, tyckte att allt flöt på när jag började komma igång.
             Jag tänkte på strukturen vi arbetade med i databaskursen genom get och post med formulär och tabeller. Erfarenheten från den kursen underlättade något enormt till denna vecka. Jag satte mig ner med papper och penna och gjorde 
