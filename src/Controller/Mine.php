@@ -78,7 +78,13 @@ class Mine extends AbstractController
             kunde utföra spelet. Sedan byggde jag upp enligt värde på korten, sparade värden i session för att kunna hämta. Hela processen gick smidigt och var väldigt roligt. Jag gillar att jobba i symfony, i början tyckte jag att den var svår, 
             men efter första veckan tycker jag om det. Denna TIL för denna vecka är att se till att jag jobbar mer enligt planen, den fungerar ofta.',
             'kmom4' => 'Skriv här',
-            'kmom5' => 'Skriv här',
+            'kmom5' => 'Jag tyckte att det gick väldigt bra att jobba igenom veckans övning. Lite klurigt att komma igång eftersom jag missade tisdagens föreläsning och sen när det inte gick att se den i efterhand. Tor att det hade underlättat 
+            mycket att komma igång med övningen och uppgiften. Det var ingenting speciellt jag reagerade på under övningen, tyckte att allt flöt på när jag började komma igång.
+            Jag tänkte på strukturen vi arbetade med i databaskursen genom get och post med formulär och tabeller. Erfarenheten från den kursen underlättade något enormt till denna vecka. Jag satte mig ner med papper och penna och gjorde 
+            en plan för min struktur och höll mig till den strukturen, vilket fungerade bra. Det enda jag tänkte på vid användargränssnitt var designen att strukturera datan tydligt.
+            Denna vecka gjorde jag inga extrauppgifter.
+            Jag gillade ORM. Det var en tydlig koppling mellan att jobba med klasser med information som är i databaser. Objekt kunde enkelt skapas, sättas och fås genom att slå ihop dem delarna.
+            Mitt TIL för denna vecka är att påminna mig själv att planering är A och O.',
             'kmom6' => 'Skriv här',
             'kmom10' => 'Skriv här',
         ]);
