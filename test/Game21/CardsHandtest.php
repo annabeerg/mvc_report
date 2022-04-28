@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
  * Test cases for class CardHandJoker.
  */
 
-class CardsHandJokertest extends TestCase
+class CardsHandtest extends TestCase
 {
     /**
      * Tests class object is correct.
