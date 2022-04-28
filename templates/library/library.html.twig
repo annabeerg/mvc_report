@@ -1,0 +1,36 @@
+{% include 'main.html.twig' %}
+
+    <body>
+
+        <div class="content">
+            <h2>Bibliotek</h2>
+
+            <div>
+                {% block navbar %}
+                    <ul class="cardlist">
+                        <li class="cardlister"><a href="{{ path("newbook") }}">Lägg till bok</a></li>
+                    </ul>
+                {% endblock %}
+            </div>
+
+        <table>
+            <th>Se mer om boken</th>
+            <th>Titel</th>
+            <th>Författare</th>
+            <th>ISBN</th>
+            <th>Action</th>
+            {% for i in library %}
+                <tr>
+                    <td><a href="/library/{{i.id}}">Klicka här!</a></td>
+                    <td>{{ i.titel }}</td>
+                    <td>{{ i.namn }}</td>
+                    <td>{{ i.ISBN }}</td>
+                    <td><a href="/library/update/{{i.id}}">Uppdatera</a> / <a href="/library/delete/{{i.id}}">Radera</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        </div>
+        
+    </body>
+
+{% include 'footer.html.twig' %}

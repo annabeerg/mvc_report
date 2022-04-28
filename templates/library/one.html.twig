@@ -1,0 +1,34 @@
+{% include 'main.html.twig' %}
+
+    <body>
+
+        <div class="content">
+            <h2>Om boken</h2>
+
+            <div>
+                {% block navbar %}
+                    <ul class="cardlist">
+                        <li class="cardlister"><a href="{{ path("library") }}">Tillbaka</a></li>
+                    </ul>
+                {% endblock %}
+            </div>
+
+            <img src="{{ library.bild }}" alt="Picture of book cover" width="400" height="600" style="margin-bottom: 15px;">
+
+        <table>
+            <th>Titel</th>
+            <th>Författare</th>
+            <th>ISBN</th>
+            <th>Action</th>
+            <tr>
+                <td>{{ library.titel }}</td>
+                <td>{{ library.namn }}</td>
+                <td>{{ library.ISBN }}</td>
+                <td><a href="/library/update/{{library.id}}">Uppdatera</a> / <a href="/library/delete/{{library.id}}">Radera</a></td>
+            </tr>
+        </table>
+        </div>
+        
+    </body>
+
+{% include 'footer.html.twig' %}

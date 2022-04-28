@@ -1,0 +1,34 @@
+{% include 'main.html.twig' %}
+
+    <body>
+
+        <div class="content">
+            <h2>Uppdatera bok</h2>
+
+            <img src="{{ library.bild }}" alt="Picture of book cover" width="200" height="300" style="margin-bottom: 15px;">
+            
+            <form method="post">
+                <label>
+                    Titel:
+                </label>
+                <input type="text" name="title" value="{{library.titel}}">
+                <label>
+                    Författare:
+                </label>
+                <input type="text" name="name" value="{{library.namn}}">
+                <label>
+                    ISBN:
+                </label>
+                <input type="text" name="number" value="{{library.ISBN}}">
+                <label>
+                    Bildlänk:
+                </label>
+                <input type="text" name="picture" value="{{library.bild}}">
+
+                <input type="submit" value="Uppdate">
+            </form>
+        </div>
+        
+    </body>
+
+{% include 'footer.html.twig' %}
