@@ -14,6 +14,16 @@ class Hand
     public $deck = [];
     public $list = [];
     public $card;
+    public $die;
+
+    /**
+     * Construct new CardGraphic object
+     * @param int
+     */
+    public function __construct()
+    {
+        $this->die = new CardGraphic();
+    }
 
     /**
      * Method roll. If card object is in array deck, create new card object. 
@@ -77,7 +87,6 @@ class Hand
         global $die;
 
         $die = new CardGraphic();
-
         if (! in_array($die, $this->hand)) {
             $this->hand[] = $die;
             $this->card = $die->getAsString();

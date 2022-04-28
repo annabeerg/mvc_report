@@ -14,6 +14,16 @@ class Game
     protected $hands = [];
     protected $allplayingcards = [];
     protected $cards;
+    protected $card;
+
+    /**
+     * Construct new CardGraphic object
+     * @param int
+     */
+    public function __construct()
+    {
+        $this->card = new CardGraphic();
+    }
 
     /**
      * Method setplayers. Set Player objects.
