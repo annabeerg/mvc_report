@@ -4,13 +4,28 @@
 <body>
 
     <div class="content">
-    {% for i in hand %}
-        <div class="space">
-        {% for x in i %}
-        <img class="cards" src="{{ asset(x) }}" alt="two of hearts">
+    {% if hand is not null %}
+        {% for i in hand %}
+            <div class="space">
+            {% for x in i %}
+            <img class="cards" src="{{ asset(x) }}" alt="two of hearts">
+            {% endfor %}
+            </div>
         {% endfor %}
-        </div>
-    {% endfor %}
+    {% endif %}
+
+        <form method="post">
+            <label>
+                Antal kort:
+            </label>
+            <input type="text" name="number" value="5">
+            <label>
+                Antal spelare:
+            </label>
+            <input type="text" name="amount"  value="2">
+
+            <input type="submit" value="Create">
+        </form>
     </div>
     
 </body>

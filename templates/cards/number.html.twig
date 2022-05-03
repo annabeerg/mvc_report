@@ -6,6 +6,14 @@
     <div class="content">
         <p>Cards left: {{ amount }}</p>
         <img class="cards" src="{{ asset(hand) }}" alt="two of hearts">
+        <form method="post">
+            <label>
+                Kort vid nummer:
+            </label>
+            <input type="text" name="number">
+
+            <input type="submit" value="Create">
+        </form>
     </div>
     
 </body>

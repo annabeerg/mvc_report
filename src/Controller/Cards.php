@@ -110,34 +110,37 @@ class Cards extends AbstractController
 
     /**
      * @Route(
-     *      "/card/deck/draw/:number",
+     *      "/card/deck/draw/number",
      *      name="number",
      *      methods={"HEAD", "GET"}
      * )
      */
     public function number(): Response
     {
-        return $this->render('cards/empty.html.twig');
+        return $this->render('cards/number.html.twig');
     }
 
     /**
      * @Route(
-     *      "/card/deck/draw/{number}",
+     *      "/card/deck/draw/number",
      *      name="number-processer",
-     *      methods={"GET"}
+     *      methods={"POST"}
      * )
      */
     public function processer(
         SessionInterface $session,
-        $number = 1
     ): Response {
         $hand = $session->get("cards/cardhand") ?? new Hand();
+        $count = $session->get("count") ?? 52;
+
+        $number = $_POST['number'];
 
         $hand->sethand($number);
 
         $session->set("cardhand", $hand);
+        $session->set("count", $count - 1);
         global $counter;
-        $counter = 52 - $hand->getNumberDices();
+        $counter = $session->get("count");
 
         $data = [
             'amount' => $counter,
@@ -149,29 +152,35 @@ class Cards extends AbstractController
 
     /**
      * @Route(
-     *      "/card/deck/deal/:players/:cards",
+     *      "/card/deck/deal/players/cards",
      *      name="player",
      *      methods={"HEAD", "GET"}
      * )
      */
     public function players(): Response
     {
-        return $this->render('cards/empty.html.twig');
+        $data = [
+            'hand' => null
+        ];
+        return $this->render('cards/game.html.twig', $data);
     }
 
     /**
      * @Route(
-     *      "/card/deck/deal/{players}/{cards}",
+     *      "/card/deck/deal/players/cards",
      *      name="player-processor",
-     *      methods={"GET"}
+     *      methods={"POST"}
      * )
      */
     public function processor(
-        $players = 2,
-        $cards = 5
     ): Response {
+        $cards = $_POST['number'];
+        $players = $_POST['amount'];
         if (($cards * $players) > 52) {
-            return $this->render('cards/empty.html.twig');
+            $data = [
+                'hand' => null
+            ];
+            return $this->render('cards/game.html.twig', $data);
         } elseif (($cards * $players) < 52) {
             $game = new Game();
 
