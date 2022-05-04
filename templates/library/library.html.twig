@@ -21,11 +21,11 @@
             <th>Action</th>
             {% for i in library %}
                 <tr>
-                    <td><a href="/library/{{i.id}}">Klicka här!</a></td>
+                    <td><a href="{{ path("book-process", { 'id': i.id }) }}">Klicka här!</a></td>
                     <td>{{ i.titel }}</td>
                     <td>{{ i.namn }}</td>
                     <td>{{ i.ISBN }}</td>
-                    <td><a href="/library/update/{{i.id}}">Uppdatera</a> / <a href="/library/delete/{{i.id}}">Radera</a></td>
+                    <td><a href="{{ path("update-book", { 'id': i.id }) }}">Uppdatera</a> / <a href=" {{ path("delete-book", { 'id': i.id }) }}">Radera</a></td>
                 </tr>
             {% endfor %}
         </table>
