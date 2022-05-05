@@ -88,6 +88,7 @@
     },
     "scripts": {
         "phpmd": "tools/phpmd/vendor/bin/phpmd src text phpmd.xml || true",
+        "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json",
         "phpstan": "tools/phpstan/vendor/bin/phpstan analyse -l 9 src || true",
         "phpcpd": "tools/phpcpd/vendor/bin/phpcpd src || true",
         "linter": [
@@ -110,7 +111,7 @@
         "phpcbf": "tools/php-codesniffer/vendor/bin/phpcbf --standard=PSR12 src",
         "phpunit": [
             "@putenv XDEBUG_MODE=coverage",
-            "php bin/phpunit"
+            "php vendor/bin/phpunit"
         ],
         "phpdoc": "tools/phpdoc/phpdoc"
     },

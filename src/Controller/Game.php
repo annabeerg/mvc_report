@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-
 use App\Card\Hand;
 use App\Card\GameCheck;
 
@@ -31,11 +30,11 @@ class Game extends AbstractController
     }
 
     public function helper(
-        $pointstwo,
-        $pointsone,
-        $winner,
-        $game
-    ) {
+        mixed $pointstwo,
+        mixed $pointsone,
+        string $winner,
+        Hand $game
+    ): string {
         if ($pointstwo > $pointsone and $pointstwo < 21) {
             $winner = "Computer won!";
         } elseif ($pointstwo < $pointsone) {
@@ -57,10 +56,10 @@ class Game extends AbstractController
     }
 
     public function helpertwo(
-        $pointstwo,
-        $pointsone,
-        $winner,
-    ) {
+        mixed $pointstwo,
+        mixed $pointsone,
+        string $winner,
+    ): string {
         if ($pointsone == 21) {
             $winner = "You won!";
         } elseif ($pointstwo == 21) {
@@ -206,7 +205,7 @@ class Game extends AbstractController
 
             $pointsonetotal = $points1s + $pointsone;
             if ($points2s < 17) {
-                $gamer2 = $game->add();
+                $gamer2 = $game->add(); 
                 $points2 = new GameCheck();
                 $pointstwo = $points2 ->getter($gamer2);
                 $pointstwototal = $points2s + $pointstwo;

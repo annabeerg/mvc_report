@@ -77,16 +77,4 @@ class Library
 
         return $this;
     }
-
-    public function getPicture(): ?string
-    {
-        return $this->Picture;
-    }
-
-    public function setPicture(?string $Picture): self
-    {
-        $this->Picture = $Picture;
-
-        return $this;
-    }
 }

@@ -8,20 +8,19 @@ namespace App\Card;
 
 class Players
 {
-    protected $player;
+    protected int $player;
 
     /**
      * Method set. Set protected variable player
-     * @param int
      */
-    public function set($play): void
+    public function set(int $play): void
     {
         $this->player = $play;
     }
 
     /**
      * Method get
-     * @return variable player
+     * @return int
      */
     public function get()
     {

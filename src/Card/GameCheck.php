@@ -11,9 +11,9 @@ class GameCheck
     /**
      * Method getter.
      * Checks if variable name to set value holder.
-     * @return returns variable holder
+     * @return int
      */
-    public function getter($name)
+    public function getter(string $name): int
     {
         $value = str_split($name);
         $holder = 1;
@@ -35,9 +35,9 @@ class GameCheck
     /**
      * Method getters.
      * Checks if variable name to set value holder.
-     * @return returns variable holder
+     * @return int
      */
-    public function getters($letter, $holder)
+    public function getters(string $letter, int $holder): int
     {
         if ($letter == "2") {
             $holder = 2;

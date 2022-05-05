@@ -8,11 +8,10 @@ namespace App\Card;
 
 class CardJoker
 {
-    protected $value;
+    protected int $value;
 
     /**
      * Construct random number at initiation of the class.
-     * @param int
      */
     public function __construct()
     {
@@ -21,10 +20,9 @@ class CardJoker
 
     /**
      * Method get
-     * @return protected variable value
-     * @param int
+     * @return int
      */
-    public function get($number): int
+    public function get(int $number): int
     {
         $this->value = $number;
         return $this->value;
@@ -32,8 +30,7 @@ class CardJoker
 
     /**
      * Method roll. Set variable value with random number between 1-52.
-     * @return variable value
-     * @param int
+     * @return int
      */
     public function roll(): int
     {
@@ -43,8 +40,7 @@ class CardJoker
 
     /**
      * Method getAsString
-     * @return variable value
-     * @param string
+     * @return string
      */
     public function getAsString(): string
     {

@@ -118,9 +118,8 @@ class CardGraphic extends Card
         "ace of spades",
     ];
 
-    
     /**
-     * Method constuctor from parent class Card. 
+     * Method constuctor from parent class Card.
      */
 
     public function __construct()
@@ -130,30 +129,25 @@ class CardGraphic extends Card
 
     /**
      * Method getter
-     * @param int
-     * @return representation at index position $number
-     * @param return string
+     * @return string
      */
-    public function getter($number)
+    public function getter(int $number): string
     {
         return $this->representation[$number];
     }
 
     /**
      * Method getname
-     * @param int
-     * @return name at index position $number
-     * @param return string
+     * @return string
      */
-    public function getname($number)
+    public function getname(int $number): string
     {
         return $this->name[$number];
     }
 
     /**
      * Method getAsString
-     * @return representation at index position value.
-     * @param return string
+     * @return string
      */
     public function getAsString(): string
     {

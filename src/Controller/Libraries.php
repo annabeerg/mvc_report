@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-
 use App\Entity\Library;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\LibraryRepository;
@@ -16,7 +15,7 @@ use App\Repository\LibraryRepository;
 class Libraries extends AbstractController
 {
     /**
-     * @Route("/library", 
+     * @Route("/library",
      * name="library",
      * methods={"GET","HEAD"}
      * )
@@ -35,12 +34,12 @@ class Libraries extends AbstractController
     }
 
     /**
-     * @Route("/library/new", 
+     * @Route("/library/new",
      * name="newbook",
      * methods={"GET","HEAD"}
      * )
      */
-    public function createLibrary(): Response 
+    public function createLibrary(): Response
     {
         return $this->render('library/addlibrary.html.twig');
     }
@@ -53,28 +52,29 @@ class Libraries extends AbstractController
      * )
      */
     public function createBook(
-        ManagerRegistry $doctrine): Response {
-            $entityManager = $doctrine->getManager();
+        ManagerRegistry $doctrine
+    ): Response {
+        $entityManager = $doctrine->getManager();
 
-            $library = new Library();
-            $library->setNamn($_POST['name']);
-            $library->setTitel($_POST['title']);
-            $library->setISBN($_POST['number']);
-            $library->setBild($_POST['picture']);
+        $library = new Library();
+        $library->setNamn($_POST['name']);
+        $library->setTitel($_POST['title']);
+        $library->setISBN($_POST['number']);
+        $library->setBild($_POST['picture']);
 
-            // tell Doctrine you want to (eventually) save the library
-            // (no queries yet)
-            $entityManager->persist($library);
+        // tell Doctrine you want to (eventually) save the library
+        // (no queries yet)
+        $entityManager->persist($library);
 
-            // actually executes the queries (i.e. the INSERT query)
-            $entityManager->flush();
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
 
-            return $this->redirectToRoute('library');
+        return $this->redirectToRoute('library');
     }
 
-    
+
     /**
-     *  @Route("/library/{id}", 
+     *  @Route("/library/{id}",
      *  name="book-process",
      *  methods={"GET"}
      * )
@@ -85,24 +85,24 @@ class Libraries extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         $library = $entityManager->getRepository(Library::class)->find($id);
-    
+
         if (!$library) {
             throw $this->createNotFoundException(
-                'No library found for id '.$id
+                'No library found for id ' . $id
             );
         }
-    
+
         $data = [
             'library' => $library
         ];
-    
+
         return $this->render('library/one.html.twig', $data);
     }
 
 
-    
+
     /**
-     * @Route("/library/update/{id}", 
+     * @Route("/library/update/{id}",
      * name="update-book",
      * methods={"GET","HEAD"}
      * )
@@ -113,10 +113,10 @@ class Libraries extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         $library = $entityManager->getRepository(Library::class)->find($id);
-    
+
         if (!$library) {
             throw $this->createNotFoundException(
-                'No library found for id '.$id
+                'No library found for id ' . $id
             );
         }
 
@@ -128,7 +128,7 @@ class Libraries extends AbstractController
     }
 
     /**
-     *  @Route("/library/update/{id}", 
+     *  @Route("/library/update/{id}",
      *  name="update-book-process",
      *  methods={"POST"}
      * )
@@ -139,23 +139,23 @@ class Libraries extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         $library = $entityManager->getRepository(Library::class)->find($id);
-    
+
         if (!$library) {
             throw $this->createNotFoundException(
-                'No library found for id '.$id
+                'No library found for id' . $id
             );
         }
-    
+
         $library->setNamn($_POST['name']);
         $library->setTitel($_POST['title']);
         $library->setISBN($_POST['number']);
         $library->setBild($_POST['picture']);
         $entityManager->flush();
-    
+
         return $this->redirectToRoute('library');
     }
 
-    
+
     /**
      *  @Route("/library/delete/{id}",
      *  name="delete-book",
@@ -168,16 +168,16 @@ class Libraries extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         $library = $entityManager->getRepository(Library::class)->find($id);
-    
+
         if (!$library) {
             throw $this->createNotFoundException(
-                'No library found for id '.$id
+                'No library found for id' . $id
             );
         }
-    
+
         $entityManager->remove($library);
         $entityManager->flush();
-    
+
         return $this->redirectToRoute('library');
     }
 }

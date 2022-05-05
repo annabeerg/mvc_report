@@ -18,7 +18,6 @@ class Game
 
     /**
      * Construct new CardGraphic object
-     * @param int
      */
     public function __construct()
     {
@@ -28,7 +27,7 @@ class Game
     /**
      * Method setplayers. Set Player objects.
      */
-    public function setplayers($players): void
+    public function setplayers(int $players): void
     {
         for ($x = 0; $x <= $players; $x++) {
             $player = new Players();
@@ -40,7 +39,7 @@ class Game
     /**
      * Method sethands. Sets hand objects with cards.
      */
-    public function sethands($number): void
+    public function sethands(int $number): void
     {
         $hand = new CardHand();
         for ($i = 0; $i <= $number - 1; $i++) {
@@ -52,10 +51,10 @@ class Game
     }
 
     /**
-     * Method getcards. Set varieble sethands with hand objects from players. 
-     * @return string from addhand method.
+     * Method getcards. Set varieble sethands with hand objects from players.
+     * @return void
      */
-    public function getcards($players, $number): void
+    public function getcards(int $players, int $number): void
     {
         $this->cards = new Hand();
         $this->setplayers($players);
@@ -67,9 +66,9 @@ class Game
     /**
      * Method starthands.
      * Sets getcards method.
-     * @return variable hands
+     * @return array
      */
-    public function starthands($players, $number)
+    public function starthands(int $players, int $number)
     {
         $this->getcards($players, $number);
         return $this->hands;
@@ -77,7 +76,7 @@ class Game
 
     /**
      * Method getAsString
-     * @return string players
+     * @return string
      */
     public function getAsString(): string
     {

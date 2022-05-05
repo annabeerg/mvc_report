@@ -15,9 +15,9 @@ class CardHand
 
     /**
      * Method set card into arrau hand
-     * @param string
+     * @return void
      */
-    public function set($card): void
+    public function set(string $card): void
     {
         {
             $this->hand[] = $card;
@@ -26,7 +26,6 @@ class CardHand
 
     /**
      * Method get
-     * @return array
      */
     public function get(): array
     {

@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-
 use App\Card\Card;
 use App\Card\Hand;
 use App\Card\CardGraphic;
@@ -35,7 +34,7 @@ class Cards extends AbstractController
 
         $data = [
         'hand' => $value
-    ];
+        ];
 
         return $this->render('cards/cardgame.html.twig', $data);
     }
@@ -172,8 +171,8 @@ class Cards extends AbstractController
      *      methods={"POST"}
      * )
      */
-    public function processor(
-    ): Response {
+    public function processor(): Response
+    {
         $cards = $_POST['number'];
         $players = $_POST['amount'];
         if (($cards * $players) > 52) {

@@ -18,7 +18,6 @@ class Hand
 
     /**
      * Construct new CardGraphic object
-     * @param int
      */
     public function __construct()
     {
@@ -26,7 +25,7 @@ class Hand
     }
 
     /**
-     * Method roll. If card object is in array deck, create new card object. 
+     * Method roll. If card object is in array deck, create new card object.
      * If not in array, append array.
      */
     public function roll(Card $die): void
@@ -39,10 +38,9 @@ class Hand
 
     /**
      * Method showJoker
-     * @return array of cards with jokers
-     * @param array
+     * @return array
      */
-    public function showJoker()
+    public function showJoker(): array
     {
         global $die;
 
@@ -59,10 +57,9 @@ class Hand
 
     /**
      * Method show
-     * @return array of cards without jokers
-     * @param array
+     * @return array
      */
-    public function show()
+    public function show(): array
     {
         global $die;
 
@@ -79,8 +76,7 @@ class Hand
 
     /**
      * Method addhand.
-     * Adds card to hand array. If in array, create new card and check array else add to hand. 
-     * @param CardGraphic object
+     * Adds card to hand array. If in array, create new card and check array else add to hand.
      */
     public function addhand(): void
     {
@@ -91,14 +87,14 @@ class Hand
             $this->hand[] = $die;
             $this->card = $die->getAsString();
         } elseif (in_array($die, $this->hand)) {
-            $this->add(new CardGraphic());
+            $this->add();
         }
     }
 
     /**
      * Method sethand. Alternative to addhand method. Also sets card variable.
      */
-    public function sethand($number): void
+    public function sethand(int $number): void
     {
         global $die;
         global $value;
@@ -110,15 +106,15 @@ class Hand
             $this->hand[] = $die;
             $this->card = $die->getAsString();
         } elseif (in_array($value, $this->hand)) {
-            $this->add(new CardGraphic());
+            $this->add();
         }
     }
 
     /**
      * Method __toString
-     * @return variable card
+     * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->card;
     }
@@ -136,7 +132,7 @@ class Hand
 
     /**
      * Method add.
-     * @return string from addhand method.
+     * @return string 
      */
     public function add()
     {
@@ -146,7 +142,7 @@ class Hand
 
     /**
      * Method adder.
-     * @return string from addhand method.
+     * @return string
      */
     public function adder()
     {
@@ -165,7 +161,7 @@ class Hand
 
     /**
      * Method getAsString returns array of deck.
-     * @return array.
+     * @return array
      */
     public function getAsString(): array
     {
