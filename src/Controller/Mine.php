@@ -41,6 +41,18 @@ class Mine extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/metrics", name="metrics")
+     */
+    public function data(): Response
+    {
+        $data = [
+            'metrics' => "Metrics"
+        ];
+        // print_r($products);
+        return $this->render('data.html.twig', $data);
+    }
+
 
 
     /**
