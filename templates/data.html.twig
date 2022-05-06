@@ -61,7 +61,7 @@
         Vad jag kan se så anser Scrutinizer att flera av testfilerna har buggar, att vissa siffror används för mycket. Samt oanvänd kod i dessa filer. Sedan har vi återigen filen Game i controller som anses vara för complex.
         Dessa tre områden är har absolut förbättringspotential enligt rapporten. 
         Som nämnt tidigare kunde inte coverage täckas av någon anledning som jag tyvärr inte vet så jag kan inte kommentera den punkten. Jag kan tyvärr inte se coupling eller cohesion i code Class. Vet tyvärr inte heller varför.
-        Det jag kan lägga märke till i Scrutinizer är hur otroligt många av bakgrundsfilerna har dålig komplexitet och motsvarar majoriteten avdem filerna 
+        Det jag kan lägga märke till i Scrutinizer är hur otroligt många av bakgrundsfilerna har dålig komplexitet och motsvarar majoriteten av dem filerna 
         som fått betyget F av olika andleningar. 
         </p>
         <br>
@@ -69,17 +69,25 @@
         <br>
         <p>
         Den förbättringen som sticker ut främst för mig är storleken på Game i controllern, dess violation "Too complex method code" same dess Cohesion som ligger på 2, med stor sannolikhet som en konsekvens av dem tidigare nämnda faktorerna.
-        Koden i klassen är alldelles för spretig. Det behöver skapas en ny klass för att minska klassens stolek samt där jag kan samla metoderna som inte har router i klassen Game för att förbättra klassens storlek samt cohesion. 
+        Koden i klassen är alldelles för spretig. Det behöver skapas en ny klass för att minska klassens stolek samt där jag kan samla metoderna som inte har router eller hanterar session i klassen Game för att förbättra klassens storlek samt cohesion. 
         Strukturera om metoderna som jag skulle tro är för komplexa i mindre metoder eller i en annan klass beroende på struktur i nuvarande metod för att göra metoderna mindre komplexa. 
         Bara att strukturera upp koden kommer att förbättra klassens Cohesion, den blir mer fokuserad på route metoderna till spelets sidor. LCOM låg på 2, volym 2677.3, class cycl. 35, difficulty 45.07 innan ändring.
 
-        Genom dem tre förbättringarna som är gjorda 
-
+        Efter dem tre förbättringarna är genomförda kan jag inte se någon tydlig förändring i Scrutinizer. Jag kan inte se coverage, cohesion eller coupling, vilket gör att jag inte kan analysera en förändring genom dessa mätvärden.
+        Det har inte blivit någon förändring i poängen för test coverage, den kvarstår på 6.14. På så vis blir jag beroende av att lägga störst vikt vic phpmetrics analys.
+        Här kan jag tydligt se att efter förängringarna till en fil har cyclomatic complexity minskat till 23, där värdet tidigare var 35 och maintainability index ökat till 55.64, där värder tidigare var 49.03.
+        LCOM har minskar till 1, där tidigare värde var 2, vilket är en positiv förändring. Klassen har nu blivit mer "fokuserad". Från övriga tidigare nämnda mätvärden har det blivit dessa förändringar: volym har minskat med 501,95 från en volym på 2677.3 till 2175.35.
+        Difficulty har minskat till 28.9 från tidigare värdet 45.07. 
         </p>
         <br>
         <h3>Diskussion</h3>
         <br>
-        <p></p>
+        <p>
+        Som vi kan se från datan har det tydligt skett en förändring i datan från innan till efter förändringen. Genom att den filen hade flera pnkter med förbättringspotential kan man nu tydligt se att genom små ändrignar kan det göra stor skillnad till
+        effektivitet av filens data. Dock om tid fanns skulle jag nog göra om hela uppgiftens klasser och strukturera dem på ett annorlunda sätt för att minimera risken till en sådan stor oc problematisk fil som Game klassen i controllern. Den blev aldelles för stor,
+        och är fortfarande för stor samt för komplex. Men jag kan tänka mig att denna uppgift vill ge inblick i detta faktum, hur viktigt det är med strukturerad kod. Även fast filen fortfarande har punkter den skulle kunna förbättras inom så kan man ändå tdligt se en
+        förbättring. Tråkigt att data i Scrutinizer saknas för att kunna göra en så pass komplett analys som möjligt. 
+        </p>
         <br>
     </div>
     
