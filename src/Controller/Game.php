@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Card\Hand;
 use App\Card\GameCheck;
+use App\Card\Helpers;
 
 class Game extends AbstractController
 {
@@ -27,55 +28,6 @@ class Game extends AbstractController
     public function start(): Response
     {
         return $this->render('game/home.html.twig');
-    }
-
-    public function helper(
-        mixed $pointstwo,
-        mixed $pointsone,
-        string $winner,
-        Hand $game
-    ): string {
-        if ($pointstwo > $pointsone and $pointstwo < 21) {
-            $winner = "Computer won!";
-        } elseif ($pointstwo < $pointsone) {
-            if ($pointstwo <= 17) {
-                $gamer2 = $game->add();
-                $pointstwos = new GameCheck();
-                $pointstwototal = $pointstwos ->getter($gamer2);
-                $pointstwo = $pointstwo + $pointstwototal;
-            }
-            if ($pointstwo > $pointsone and $pointstwo < 21) {
-                $winner = "Computer won!";
-            } elseif ($pointstwo == $pointsone) {
-                $winner = "Computer won!";
-            } elseif ($pointsone > $pointstwo) {
-                $winner = "You won!";
-            }
-        }
-        return $winner;
-    }
-
-    public function helpertwo(
-        mixed $pointstwo,
-        mixed $pointsone,
-        string $winner,
-    ): string {
-        if ($pointsone == 21) {
-            $winner = "You won!";
-        } elseif ($pointstwo == 21) {
-            $winner = "Computer won!";
-        }
-        if ($pointstwo == 21 and $pointsone == 21) {
-            $winner = "Computer won!";
-        } elseif ($pointsone > 21) {
-            $winner = "Computer won!";
-        } elseif ($pointstwo > 21) {
-            $winner = "You won!";
-        }
-        if ($pointsone > 21 and $pointstwo > 21) {
-            $winner = "Computer won!";
-        }
-        return $winner;
     }
 
     /**
@@ -98,32 +50,7 @@ class Game extends AbstractController
         ;
 
         if ($game == 0) {
-            $game = new Hand();
-            $gamer = $game->add();
-            $gamer2 = $game->add();
-
-            $points1 = new GameCheck();
-            $points2 = new GameCheck();
-            $pointsone = $points1 ->getter($gamer);
-            $pointstwo = $points2 ->getter($gamer2);
-
-            $session->set("playeronepoints", $pointsone);
-            $session->set("playertwopoints", $pointstwo);
-            $session->set("game1", $gamer);
-            $session->set("game2", $gamer2);
-            $session->set("game", $game);
-
-
-            $data = [
-                'hand1' => $gamer,
-                'hand2' => $gamer2,
-                'points1' => $pointsone,
-                'points2' => $pointstwo,
-                'winner' => $winner,
-                'playerone' => $gamerone,
-                'playertwo' => $gamertwo
-            ];
-            return $this->render('game/gameboard.html.twig', $data);
+            return $this->gamehelperone();
         }
         $pointsone = $session->get("playeronepoints");
         $pointstwo = $session->get("playertwopoints");
@@ -131,6 +58,7 @@ class Game extends AbstractController
         $playertwocard = $session->get("game2");
         $gamerone = $session->get("gamerone");
         $gamertwo = $session->get("gamertwo");
+        $help = new Helpers();
 
         if ($pointsone != 21 or $pointstwo != 21 or $pointsone < 21 or $pointstwo < 21) {
             if ($standcounter == 1) {
@@ -138,14 +66,14 @@ class Game extends AbstractController
                 $game = new Hand();
                 $session->set("game", $game);
                 $session->set("stand", 0);
-                $winner = $this->helper(
+                $winner = $help->helper(
                     $pointstwo,
                     $pointsone,
                     $winner,
                     $game
                 );
             }
-            $winner = $this->helpertwo(
+            $winner = $help->helpertwo(
                 $pointstwo,
                 $pointsone,
                 $winner
@@ -238,4 +166,44 @@ class Game extends AbstractController
         }
         return $this->redirectToRoute('game');
     }
+
+    public function gamehelperone(
+        SessionInterface $session
+    ): Response {
+        $game = $session->get("game1") ?? 0;
+        ;
+        $gamerone = $session->get("gamerone") ?? 0;
+        $gamertwo = $session->get("gamertwo") ?? 0;
+        $winner = "empty";
+
+        $standcounter = $session->get("stand") ?? 0;
+        ;
+
+        $game = new Hand();
+        $gamer = $game->add();
+        $gamer2 = $game->add();
+
+        $points1 = new GameCheck();
+        $points2 = new GameCheck();
+        $pointsone = $points1 ->getter($gamer);
+        $pointstwo = $points2 ->getter($gamer2);
+
+        $session->set("playeronepoints", $pointsone);
+        $session->set("playertwopoints", $pointstwo);
+        $session->set("game1", $gamer);
+        $session->set("game2", $gamer2);
+        $session->set("game", $game);
+
+
+        $data = [
+            'hand1' => $gamer,
+            'hand2' => $gamer2,
+            'points1' => $pointsone,
+            'points2' => $pointstwo,
+            'winner' => $winner,
+            'playerone' => $gamerone,
+            'playertwo' => $gamertwo
+        ];
+        return $this->render('game/gameboard.html.twig', $data);
+    } 
 }

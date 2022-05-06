@@ -5,25 +5,79 @@
     <div class="content">
         <h2>{{metrics}}</h2>
         <br>
-        <h4>Introduktion</h4>
-        <br>
+        <h3>Introduktion</h3>
+        <div style="float: left; margin-right:1em;">
+            <img src="{{ ('images/complexity.png') }}" alt="My complexity" width="300" height="370">
+            <figcaption style="text-align: left;">Fig.1 Bild av min komplexitet av min kod.</figcaption>
+        </div>
         <p>
         Kod <b>Converage</b> beskriver hur mycket kod som har blivit läst under ett test. Exempelvis om det finns 1000 rader kod och kodtäckningen är 80%.
         Betyder det att 200 av dem 1000 raderna har inte blivit läst av testet. Koden är då inte optimerad att all kod "används". Det vill säga att dem 200
-        raderna kan vara överflödig kod.
-        
-        
+        raderna kan vara överflödig kod. I båda mina tester blev coverage 0%.
+        <br>
+        <br>
+        Kod <b>Complexity</b> beräknas genom mattematiska koder hur komplex kod är. Bara för att koden är komplex betyder inte det att koden behöver vara extra bra.
+        Utan kod komplexitet är en beräkning av hur krånglig koden är, att den har en hög komplexitet kan lika väl menas att koden är onödigt krånglig. Krångligare än den behöver vara.
+        Därav betyder talet inte vara positivt för att det är högt som man kanske logiskt tänker. 
+        Här är ett bildlig redovisning av min kods komplexitet.
+        I figur 1 kan man tydligt se att i en specifik fil är komplexitet alldelles för stor, över tre gånger så stor än vad som är önskvärt enligt phpmetrics. 
+        <br>
+        </p>
+        <div style="float: right;">
+            <img src="{{ ('images/coupling.png') }}" alt="My coupling" width="600" height="700">
+            <figcaption style="text-align: right;">Fig.2 Bild på mina klassers Coupling.</figcaption>
+        </div>
+        <p>
+        <br>
+        <b>Cohesion</b> beskriver hur "fokuserad" en klass är. Desto lägre siffra, desto bättre i detta sammanhang. Vad cohesion egentligen betyder är hur innehållet i en klass
+        passar ihop, att hur stark koppling innehållet har till varandra. Exempelvis om man har en klass om ett hus, skulle det passa att klassens innehåll exempelvis fokuserar på antal rum, 
+        värg på huset, hur många toaletter som finns, med mera. Denna klass har då en låg cohesion = en fokuserad klass, vilket ät positivt. Medan om klassen hus skulle ha innehållet antal kaktusar som
+        växer i staden, hur gammal grannen är eller färg på bilar på gatan, med mera. Denna klass blir då spretig och inte alls sammankopplad då den inte har ett samband. Denna spretiga klass skulle då ha en
+        hög cohesion = negativt. Min genomsnittliga LCOM (cohesion) är 1.12. 1 är ideal Cohesion medan 4 är det sämsta.
+        <br>
+        <br>
+        <b>Coupling</b> beskriver vilken koppling en klass har till andra klasser. Hur klassen är beroende av andra klasser och om andra klasser är beroende av klassen. Som Mikael beskrev det så säger
+        inte siffrorna egenltigen någonting speciellt än beskrivande av klassens relationer. 
         </p>
         <br>
-        <h4>Scrutinizer</h4>
+        <h3>Phpmetrics</h3>
         <br>
-        <p></p>
+        <p>
+        Av någon anledning så fick jag 0% i både phpmetrics och Scrutinizer angående min kodtäckning, vilket kör det svårt at analysera.
+        Man kan tydligt se att det specifikt finns en fil som är aldeles för komplex för sigg egna bästa... Det är klassen Game i controller. Den har en Cyclomatic complecity på 35 och en Maintainability Index på 49.03,
+        vilket beksrivs som den röda cirkeln i figut 1. Genom att komplexiteten är så pass hög betyder det att koden är väldigt komplex och har låg testbarhet, vilket är mindre positivt. Medan mitt snitt 
+        är 5.41 vilket betyder att generellt är koden strukturerad, välskriven och har en hög testbarhet, vilket är mer posititvt. På så vis avviker den klassen grastiskt mot det generella snittet. 
+        Min Cohesion däremot har en klass, LibraryRepository som har en LCOM på 3 mot mitt genomsnittliga LCOM (cohesion) är 1.12. Ideala Cohesion är 1 medan 4 är det sämsta. LibraryRepository är uppbyggt genom ORM
+        och är genrerad att jobba mot en databas. Det är inte en klass som jag specifikt har skrivit själv. Däremot har jag 3 klasser CardGraphic, CardGraphicJoker båda i Cards och Game i Controller som
+        siffran 2. Min coupling kan beskrivas genom figur 2, det beskriver att de flesta av mina klasser har en stark koppling till andra klasser och/eller andra klasser har en stark koppling till den klassen.
+        Vilket beskriver att de flesta av mina klasser har starka relationer till andra klasser. 
+        Ett annat områder jag ville ha upp är Class Violations. Här har jag återigen klassen Game i controller, klassen har dessa två violations: Too complex method code, Probably bugged. Detta poängterar återigen
+        att denna klass har starka brister. 
+        </p>
         <br>
-        <h4>Förbättringar</h4>
+        <h3>Scrutinizer</h3>
         <br>
-        <p></p>
+        <p>
+        Vad jag kan se så anser Scrutinizer att flera av testfilerna har buggar, att vissa siffror används för mycket. Samt oanvänd kod i dessa filer. Sedan har vi återigen filen Game i controller som anses vara för complex.
+        Dessa tre områden är har absolut förbättringspotential enligt rapporten. 
+        Som nämnt tidigare kunde inte coverage täckas av någon anledning som jag tyvärr inte vet så jag kan inte kommentera den punkten. Jag kan tyvärr inte se coupling eller cohesion i code Class. Vet tyvärr inte heller varför.
+        Det jag kan lägga märke till i Scrutinizer är hur otroligt många av bakgrundsfilerna har dålig komplexitet och motsvarar majoriteten avdem filerna 
+        som fått betyget F av olika andleningar. 
+        </p>
         <br>
-        <h4>Diskussion</h4>
+        <h3>Förbättringar</h3>
+        <br>
+        <p>
+        Den förbättringen som sticker ut främst för mig är storleken på Game i controllern, dess violation "Too complex method code" same dess Cohesion som ligger på 2, med stor sannolikhet som en konsekvens av dem tidigare nämnda faktorerna.
+        Koden i klassen är alldelles för spretig. Det behöver skapas en ny klass för att minska klassens stolek samt där jag kan samla metoderna som inte har router i klassen Game för att förbättra klassens storlek samt cohesion. 
+        Strukturera om metoderna som jag skulle tro är för komplexa i mindre metoder eller i en annan klass beroende på struktur i nuvarande metod för att göra metoderna mindre komplexa. 
+        Bara att strukturera upp koden kommer att förbättra klassens Cohesion, den blir mer fokuserad på route metoderna till spelets sidor. LCOM låg på 2, volym 2677.3, class cycl. 35, difficulty 45.07 innan ändring.
+
+        Genom dem tre förbättringarna som är gjorda 
+
+        </p>
+        <br>
+        <h3>Diskussion</h3>
         <br>
         <p></p>
         <br>
