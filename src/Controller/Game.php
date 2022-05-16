@@ -50,7 +50,32 @@ class Game extends AbstractController
         ;
 
         if ($game == 0) {
-            return $this->gamehelperone();
+            $game = new Hand();
+            $gamer = $game->add();
+            $gamer2 = $game->add();
+
+            $points1 = new GameCheck();
+            $points2 = new GameCheck();
+            $pointsone = $points1 ->getter($gamer);
+            $pointstwo = $points2 ->getter($gamer2);
+
+            $session->set("playeronepoints", $pointsone);
+            $session->set("playertwopoints", $pointstwo);
+            $session->set("game1", $gamer);
+            $session->set("game2", $gamer2);
+            $session->set("game", $game);
+
+
+            $data = [
+                'hand1' => $gamer,
+                'hand2' => $gamer2,
+                'points1' => $pointsone,
+                'points2' => $pointstwo,
+                'winner' => $winner,
+                'playerone' => $gamerone,
+                'playertwo' => $gamertwo
+            ];
+            return $this->render('game/gameboard.html.twig', $data);
         }
         $pointsone = $session->get("playeronepoints");
         $pointstwo = $session->get("playertwopoints");
@@ -133,7 +158,7 @@ class Game extends AbstractController
 
             $pointsonetotal = $points1s + $pointsone;
             if ($points2s < 17) {
-                $gamer2 = $game->add(); 
+                $gamer2 = $game->add();
                 $points2 = new GameCheck();
                 $pointstwo = $points2 ->getter($gamer2);
                 $pointstwototal = $points2s + $pointstwo;
@@ -166,44 +191,4 @@ class Game extends AbstractController
         }
         return $this->redirectToRoute('game');
     }
-
-    public function gamehelperone(
-        SessionInterface $session
-    ): Response {
-        $game = $session->get("game1") ?? 0;
-        ;
-        $gamerone = $session->get("gamerone") ?? 0;
-        $gamertwo = $session->get("gamertwo") ?? 0;
-        $winner = "empty";
-
-        $standcounter = $session->get("stand") ?? 0;
-        ;
-
-        $game = new Hand();
-        $gamer = $game->add();
-        $gamer2 = $game->add();
-
-        $points1 = new GameCheck();
-        $points2 = new GameCheck();
-        $pointsone = $points1 ->getter($gamer);
-        $pointstwo = $points2 ->getter($gamer2);
-
-        $session->set("playeronepoints", $pointsone);
-        $session->set("playertwopoints", $pointstwo);
-        $session->set("game1", $gamer);
-        $session->set("game2", $gamer2);
-        $session->set("game", $game);
-
-
-        $data = [
-            'hand1' => $gamer,
-            'hand2' => $gamer2,
-            'points1' => $pointsone,
-            'points2' => $pointstwo,
-            'winner' => $winner,
-            'playerone' => $gamerone,
-            'playertwo' => $gamertwo
-        ];
-        return $this->render('game/gameboard.html.twig', $data);
-    } 
 }

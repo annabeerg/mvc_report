@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <main>
+        <head>
+            <meta charset="UTF-8">
+            <title>{% block title %}anbj21{% endblock %}</title>
+            <link rel="stylesheet" href="{{ asset("css/project.css") }}"/>
+        </head>
+        <header>
+            <div class="header">
+                <h1>KLIMATMÅL 13<h1>
+            </div>
+
+            <div id="navbar">
+                {% block navbar %}
+                    <ul class="nav">
+                        <li class="navlist"><a href="{{ url("project") }}">OM KLIMATMÅL 13</a></li>
+                        <li class="navlist"><a href="{{ url("home") }}">TILLBAKA TILL "REPORT"</a></li>
+                    </ul>
+                {% endblock %}
+            </div>
+        </header>
+

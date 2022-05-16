@@ -1,0 +1,408 @@
+{% include '/project/main.html.twig' %}
+
+<body>
+
+    <div class="content">
+        <h2>BEKÄMPA KLIMATFÖRÄNDRINGARNA</h2>
+        <br>
+        <p>
+        Åren på 1820-talet gjorde Joseph Fourier upptäckten av växthuseffekten. Men så sent som 1896 gjordes första undesökning inom området kvantitativt av svenska Svante Arrhenius och 
+        presenterade terorin att koldioxid påverkar jordens medeltemperatur. Många år har gått sedan dess. Många upptäckter och flera år av forkning tills ämnet kommer upp till debatt hösten 2009 om FN:s klimatpanel IPCC och dess slutsatser att
+        mänskliga utslätt av växthusgaser, främst koldioxid, höjer jordens medeltemperatur. WWF skriver på deras hemsida angående klimarförändringen.
+        </p>
+        <br>
+        <blockquote cite="https://www.globalamalen.se/om-globala-malen/mal-13-bekampa-klimatforandringarna/">
+        <i>Den globala uppvärmningen och klimatförändringarna får katastrofala följder, som global avsmältning av glaciärer, 
+        höjda havsnivåer, fler och mer intensiva extremväder som perioder av extremhetta, torka, skyfall, stormar som i sin tur ökar risken för följder som skogsbränder och översvämningar. De fattigaste och mest sårbara människorna på vår planet drabbas hårt,
+        bland annat på grund av hotad livsmedelsproduktion, men även vi i Sverige kommer att drabbas allt oftare. Därtill hotas viktiga arter, livsmiljöer och hela ekosystem. Nu räknas varje tiondels grad.". Kortfattat är slutsatsen att mycket har hänt sedan första 
+        upptäckten av Fourier, för omkring 200 år sedan.  <a href="https://www.wwf.se/klimat/klimatforandringar/">Läs mer</a></i>
+        </blockquote>
+        <br>
+        <p>
+        Från data samlad genom SMHI, <a href="https://www.smhi.se/klimat/klimatet-da-och-nu/klimatindikatorer/klimatindikator-temperatur-1.2430">läs mer här</a></i>, angående klimatindikatoren temperatur kan vi se samlad data nedan från 2017 till 2020. Övriga klimatindikatorer är:
+        snö, extrem nederbörd, maximal isutbredning, havsnivå, silinstrålning, geostrofisk vind, vegetationsperiodens längd och vårflodsstart.
+        Datan nedan fokuserar på temperatur och beskriver medeltemperatur i Sverige per år. Data från 1860 fram till 2017, är uteslutet från tabellen nedan. Då datan från mål 13 som data presenteras längre ned på denna sida inkluderar data från 2017 till 2018 är detta den mest relevanta datan från tidsperioden.
+        Datan är framtagen genom mätningar i olika åstider utspritt genom hela landet. Genom att granska datan kan man inte se en drastisk förändring genom tid. Men sedan slutet av 1800-talet har Sveriges medeltemperatur ökat med två grader. SMHI beskriver att tydligast kan man se en förändring att våren då utbredningen av snö och is minskat,
+        vilket gör att vårsolen snabbare kan omvändlas till uppvärmning av luft. Antalet riktigt kalla vintrar har även minskat sedan år 1990.
+        Frågan är varför klimatindikatorn temperatur är så viktig. SMHI beskriver detta, 
+        </p>
+        <br>
+        <blockquote cite="https://www.globalamalen.se/om-globala-malen/mal-13-bekampa-klimatforandringarna/">
+        <i>När vi talar om klimatförändringar är det framför allt förändringar i temperaturen vi tänker på. Den ökade mängden växthusgaser dämpar den utgående värmestrålningen från jordytan medan den inkommande solstrålningen inte påverkas. Detta leder till en ökad temperatur. Observationer av temperatur visar att medeltemperaturen stiger överallt i Sverige i linje med vad klimatmodeller visar. <br><br>
+        I framtiden kan vi räkna med ytterligare uppvärmning och ökad risk för en rad olika extrema väderrelaterade händelser, som till exempel värmeböljor, skyfall och torka.  I Sverige ökar årsmedeltemperaturen ungefär dubbelt så snabbt som det globala genomsnittet. Detta kan ge allvarliga konsekvenser för människor, djur och växtliv. <br><br>
+        Extremt höga temperaturer kan till exempel påverka människors hälsa, ekosystem, jordbruk, skogsbruk, transporter på land, vatten och i luft, med mera. <a href="https://www.smhi.se/klimat/klimatet-da-och-nu/klimatindikatorer/klimatindikator-temperatur-1.2430">Läs mer</a></i>
+        <br>
+        </blockquote>
+        <p><b>Medeltemperatur över tid.</b></p>
+        <table>
+            <th>Id</th>
+            <th>År</th>
+            <th>Medeltemperatur</th>
+            {% for i in temp %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.year }}</td>
+                    <td>{{ i.middletemp }} grader celcius</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <p style="text-align: right;">Källa: SMHI</p>
+        <br>
+        <p>
+        För att bekämpa klimatförändringen har FN:s medlemsländer antagit Agenda 2030, ett universiellt agenda som innehåller sjutton globala mål som ska uppfyllas till och med år 2030.
+        </p>
+        <br>
+        <h4>Mål 13</h4>
+        <br>
+        <p>Följande citat från globalamalen.se beskriver mål 13 av dem globala målen för att bekämpa klimatförändring:</p>
+        <blockquote cite="https://www.globalamalen.se/om-globala-malen/mal-13-bekampa-klimatforandringarna/">
+        <i>Det globala arbetet för att uppnå mål 13 och bekämpa klimatförändringarna konkretiseras ytterligare i Klimatkonventionen och Parisavtalet. 
+        Klimatkonventionen är en global konvention med åtgärder för att stoppa klimatförändringarna. Klimatkonventionen undertecknades vid FN:s konferens om miljö och utveckling
+        i Rio 1992. Till Klimatkonventionen hör Parisavtalet, ett globalt klimatavtal som trädde i kraft 2016. Parisavtalet slår fast att den globala temperaturökningen ska 
+        begränsas till under två grader, med strävan efter att begränsa den till 1,5 grader. Detta ska framförallt uppnås genom att minska utsläppen av växthusgaser. En annan 
+        del av avtalet handlar om att ge stöd till dem som drabbas av klimatförändringarnas effekter och öka möjligheterna till klimatanpassning. <a href="https://www.globalamalen.se/om-globala-malen/mal-13-bekampa-klimatforandringarna/">Läs mer</a>
+        </i></blockquote>
+
+        <br>
+        <h3>Nationell indikatorer:</h3>
+        <h5>Punkt 13.2.2 inom mål 13: Utsläpp av växthusgaser per bransch, territorium och ekonomisk utveckling.</h5>
+        <br>
+        <p><b>Utsläpp av växthusgaser per aggregerad näringsgren SNI 2007.</b></p>
+        <p><i>Enhet:</i> Tusen ton koldioxidekvivalenter</p>
+        <table>
+            <th>Id</th>
+            <th>Område</th>
+            <th>2008</th>
+            <th>2009</th>
+            <th>2010</th>
+            <th>2011</th>
+            <th>2012</th>
+            <th>2013</th>
+            <th>2014</th>
+            <th>2015</th>
+            <th>2016</th>
+            <th>2017</th>
+            {% for i in climate %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.field }}</td>
+                    <td>{{ i.eight }}</td>
+                    <td>{{ i.nine }}</td>
+                    <td>{{ i.ten }}</td>
+                    <td>{{ i.eleven }}</td>
+                    <td>{{ i.twelve }}</td>
+                    <td>{{ i.thirteen }}</td>
+                    <td>{{ i.fourteen}}</td>
+                    <td>{{ i.fifteen }}</td>
+                    <td>{{ i.sixteen }}</td>
+                    <td>{{ i.seventeen }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <p style="text-align: right;">Källa: SCB, Miljöräkenskaper</p>
+        <br>
+        <br>
+
+        <table style="border-spacing: 4px; border-collapse: separate"> 
+        <tr> 
+        <td style="height: 50px; width: 50px; background-color: mediumseagreen"> Arbetsmaskiner
+        <td style="height: 50px; width: 50px; background-color: plum"> Avfall
+        <td style="height: 50px; width: 50px; background-color: NavajoWhite"> El och fjärrvärme
+        <td style="height: 50px; width: 50px; background-color: OliveDrab"> Industri
+        <td style="height: 50px; width: 50px; background-color: SkyBlue"> Inrikes transporter
+        <td style="height: 50px; width: 50px; background-color: Tomato"> Jordbruk
+        <td style="height: 50px; width: 50px; background-color: Turquoise"> Lösningsmedel och övrig produktanvänding
+        <td style="height: 50px; width: 50px; background-color: YellowGreen"> Uppvärmning av bostäder och lokaler
+        </tr> 
+
+        </table> 
+        <br>
+        <p>Procentuell förändring över tid från 2008 till 2017. Det totala ustäppet har gått från 62567 år 2008 till 52660 år 2017. Det är en procentuell minskning på <font color=”#FF0000″><b>-26%</b></font> inom området.
+        Färgschemat ovan bskriver procentuella förändringen för varje område, beskrivande av färg.
+        </p>
+        <div class="pie animate" style="--p:8;--c:mediumseagreen"> -8%</div>
+        <div class="pie animate" style="--p:42;--c:plum;--b:10px"> -42%</div>
+        <div class="pie animate" style="--p:20;--c:NavajoWhite;--b:15px"> -20%</div>
+        <div class="pie animate" style="--p:27;--c:OliveDrab;"> -27%</div>
+        <div class="pie animate" style="--p:19;--c:SkyBlue"> -19%</div>
+        <div class="pie animate" style="--p:3;--c:Tomato"> 3%</div>
+        <div class="pie animate" style="--p:5;--c:Turquoise;--b:10px"> -5%</div>
+        <div class="pie animate" style="--p:51;--c:YellowGreen;--b:5px"> -51%</div>
+        <br>
+        <p>Om man granskar det visuella diagrammet ovan kan man se en tydlig procentuell minskning inom alla näringsgrenar förutom Jordbruk, där utsläppet har ett genomsnitt på samma värde från 2008.
+        Värdet 2017, dessvärre är en ökning från 2008. Vilket beskriver den enda näringgrenen som inte har en minskning av växthusgaser. Enligt data från Naturvårdsverket kan det konstateras att köttproduktion och konsumtion har ökat genon åren. 
+        Samt konsumtion av ost. Medan konsumtion av mjölk har minskat med -27%. <a href="https://www.naturvardsverket.se/data-och-statistik/">Läs mer</a>. Medan denna näringsgren inte visar någon tydlig förbättring ser man istället en avsevärd
+        procentuell minskning i grenen avfall och uppvärming av bostäder och lokaler som istället visar en minskning på motsvarande -42% och -51%. Industrin har följt med genomsnittliga procentuella förändingen som är beskriven av totalen,
+        det vill säga totala -26% där industrin har minskat med -26%. El och fjärrvärme har minskat med -20 procent medan lösningsmedel och övrig produktanvänding samt arbetsmaskiner beskriver mindre förändringar. 
+        </p>
+        <br>
+        <p><b>Utsläpp av växthusgaser per sektor:</b></p>
+        <br>
+        <p><i>Enhet:</i> Tusen ton koldioxidekvivalenter</p>
+        <table>
+            <th>Id</th>
+            <th>Område</th>
+            <th>2008</th>
+            <th>2009</th>
+            <th>2010</th>
+            <th>2011</th>
+            <th>2012</th>
+            <th>2013</th>
+            <th>2014</th>
+            <th>2015</th>
+            <th>2016</th>
+            <th>2017</th>
+            {% for i in sni %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.field }}</td>
+                    <td>{{ i.eight }}</td>
+                    <td>{{ i.nine }}</td>
+                    <td>{{ i.ten }}</td>
+                    <td>{{ i.eleven }}</td>
+                    <td>{{ i.twelve }}</td>
+                    <td>{{ i.thirteen }}</td>
+                    <td>{{ i.fourteen}}</td>
+                    <td>{{ i.fifteen }}</td>
+                    <td>{{ i.sixteen }}</td>
+                    <td>{{ i.seventeen }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <p style="text-align: right;">Källa: Naturvårdsverket</p>
+        <br>
+        <br>
+
+        <table style="border-spacing: 4px; border-collapse: separate"> 
+        <tr> 
+        <td style="height: 50px; width: 50px; background-color: darkred"> Jordbruk, skogsbruk och fiske
+        <td style="height: 50px; width: 50px; background-color: darkblue"> Utvinning av miniral
+        <td style="height: 50px; width: 50px; background-color: purple"> Tillverkningsindustri
+        <td style="height: 50px; width: 50px; background-color: orange"> El, gas och värmeverk samt vatten, avlopp och avfall
+        <td style="height: 50px; width: 50px; background-color: lightgreen"> Byggverksamhet
+        <td style="height: 50px; width: 50px; background-color: coral"> Transportindustri
+        <td style="height: 50px; width: 50px; background-color: Chocolate"> Övriga tjänster
+        <td style="height: 50px; width: 50px; background-color: DarkGreen"> Offentlig sektor
+        <td style="height: 50px; width: 50px; background-color: hotpink"> Hushåll och ideella föreningar
+        </tr> 
+
+        </table> 
+        <br>
+        <p>Motsvarande procentuell del av totala utsläppet 72,145 (Utsläpp av växthusgaser per bransch) i fallande ordning i tabellen "Utsläpp av växthusgaser per sektor" år 2008.</p>
+        <div class="pie animate" style="--p:13"> 13%</div>
+        <div class="pie animate" style="--p:0.5;--c:darkblue;--b:10px"> 0,1%</div>
+        <div class="pie animate" style="--p:25;--c:purple;--b:15px"> 25%</div>
+        <div class="pie animate" style="--p:14;--c:orange;"> 14%</div>
+        <div class="pie animate" style="--p:0.5;--c:lightgreen"> 0,2%</div>
+        <div class="pie animate" style="--p:21;--c:coral"> 21%</div>
+        <div class="pie animate" style="--p:6;--c:Chocolate;--b:10px"> 6%</div>
+        <div class="pie animate" style="--p:1;--c:DarkGreen;--b:5px"> 1%</div>
+        <div class="pie animate" style="--p:16;--c:hotpink;"> 16%</div>
+
+        <br>
+        <p>I jämförande mot procentuella delar ovan efter en tio års period, kan procentuell del av utsläppet 63,272 (Utsläpp av växthusgaser per bransch) ses nedan. Värderna är i fallande ordning från tabellen "Utsläpp av växthusgaser per sektor" år 2017.</p>
+        <p>Färgerna kvarstår för tydligare visuell jämförelse.</p>
+        <div class="pie animate" style="--p:14"> 14%</div>
+        <div class="pie animate" style="--p:2;--c:darkblue;--b:10px"> 2%</div>
+        <div class="pie animate" style="--p:23;--c:purple;--b:15px"> 23%</div>
+        <div class="pie animate" style="--p:13;--c:orange;"> 13%</div>
+        <div class="pie animate" style="--p:3;--c:lightgreen"> 3%</div>
+        <div class="pie animate" style="--p:22;--c:coral"> 22%</div>
+        <div class="pie animate" style="--p:5;--c:Chocolate;--b:10px"> 5%</div>
+        <div class="pie animate" style="--p:1;--c:DarkGreen;--b:5px"> 1%</div>
+        <div class="pie animate" style="--p:14;--c:hotpink;"> 14%</div>
+
+        <p>Genom att först titta på det totala utsläpp av växthusgaser per branch totalt för år 2008 72,145 tusen ton koldioxidekvivalenter medan 2017 hade ett ustläpp på 63,272 tusen ton koldioxidekvivalenter.
+        Kan vi se en minskning med 8,873 tusen ton koldioxidekvivalenter. Det är en procentuell minskning med ungefär <font color=”#FF0000″><b>22%</b></font>. Det är en tydlig minskning, med ett snitt på 2,2% per år.
+        Genom tabellen och visuelliseringen av procentuella delarna kan man tydligt se att alla brancher har ungefärligt följt med kurvan av minskningen av utsläpp. Jordbruk, skogsbruk och fiske och transportindustrin, 
+        byggverksamhet är dem enda brancherna med en procentuell ökning. Dock kan det påpekas att dessa har följt med utvecklingen, annars hade procentuella delen varit tydligt avvikande än det tidigare mätvärdet från 2007.
+        Då ala tre brancherna med en procentuell stigning är ungefärligt med tidigare procent, samt genom att granska tabellen "Utsläpp av växthusgaser per sektor" syns en mätbar minskning av utsläpp.
+        </p>
+
+                <br>
+        <p><b>BNP, fasta priser, Referensår 2015:</b></p>
+        <br>
+        <table>
+            <th>Id</th>
+            <th>Område</th>
+            <th>2008</th>
+            <th>2009</th>
+            <th>2010</th>
+            <th>2011</th>
+            <th>2012</th>
+            <th>2013</th>
+            <th>2014</th>
+            <th>2015</th>
+            <th>2016</th>
+            <th>2017</th>
+            {% for i in bnp %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.field }}</td>
+                    <td>{{ i.eight }}</td>
+                    <td>{{ i.nine }}</td>
+                    <td>{{ i.ten }}</td>
+                    <td>{{ i.eleven }}</td>
+                    <td>{{ i.twelve }}</td>
+                    <td>{{ i.thirteen }}</td>
+                    <td>{{ i.fourteen}}</td>
+                    <td>{{ i.fifteen }}</td>
+                    <td>{{ i.sixteen }}</td>
+                    <td>{{ i.seventeen }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        
+        <br>
+        <p style="text-align: right;">Källa: SCB, Nationalräkenskaperna</p>
+        <br>
+        <br>
+        <table style="border-spacing: 4px; border-collapse: separate"> 
+        <tr> 
+        <td style="height: 50px; width: 50px; background-color: mediumseagreen"> 2008
+        <td style="height: 50px; width: 50px; background-color: plum"> 2009
+        <td style="height: 50px; width: 50px; background-color: NavajoWhite"> 2010
+        <td style="height: 50px; width: 50px; background-color: OliveDrab"> 2011
+        <td style="height: 50px; width: 50px; background-color: SkyBlue"> 2012
+        <td style="height: 50px; width: 50px; background-color: Tomato"> 2013
+        <td style="height: 50px; width: 50px; background-color: Turquoise"> 2014
+        <td style="height: 50px; width: 50px; background-color: YellowGreen"> 2015
+        <td style="height: 50px; width: 50px; background-color: Purple"> 2016
+        <td style="height: 50px; width: 50px; background-color: red"> 2017
+        </tr>
+        </table>
+
+        <p>
+        Med frågan "Vem släppet ut?" kan komsumtionsperspektivet svara på frågan "För vem görs utsläppen?" beskriver Statistiskamyndigheten, SCB kopplingen mellan BNP och klimatpåverkan. Nedan kan vi se ett visuellt stapeldiagram för presenterar BNP per år i årsperioden 2008 till 2017. Färgen ovan indikerar året i diagrammet nedan.
+        </p>
+
+  <div class="chart-container">
+    <div class="base"></div>
+
+    <ul class="meter">
+      <li><div>4,000,000</div></li>
+      <li><div>3,500,000</div></li>
+      <li><div>3,000,000</div></li>
+      <li><div>2,500,000</div></li>
+      <li><div>Mindre än 2,000,000</div></li>
+    </ul>
+    <!-- Background-Grid -->
+    <table>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <!-- End Background Grid -->
+   
+    <div class="bar two"></div>   
+    <div class="bar three"></div>
+    <div class="bar four"></div>   
+    <div class="bar five"></div>   
+    <div class="bar six"></div>
+    <div class="bar seven"></div>   
+    <div class="bar eight"></div> 
+    <div class="bar nine"></div> 
+    <div class="bar ten"></div> 
+    <div class="bar eleven"></div> 
+  </div>
+    <p>
+       Både konsumenten och producenten kan påverka utsläppen och naturresursanvändningen, men detta på olika sätt. Ovan i tidigare diagram har vi skådat producenten i största mån i sektorer och näringgrenar. 
+       SCB beskriver,
+    </p>
+       <br>
+        <blockquote cite="https://www.scb.se/hitta-statistik/statistik-efter-amne/miljo/miljoekonomi-och-hallbar-utveckling/miljorakenskaper/produktrelaterat/Fordjupad-information/miljorakenskaperna-visar-hur-ekonomin-paverkar-miljo-och-naturresurser/">
+        <i>De branscher som ligger tidigt i förädlingsvärdekedjan, som gruvor, jordbruk, skogsbruk, fiske, raffinaderier och tung industri, har generellt en större energianvändning och miljöpåverkan än de som ligger längre fram i förädlingsvärdeskedjan. Samtidigt är olika ekonomiska aktörer beroende av varandra för leveranser av insatsvaror och utbyten, innovationer och mycket annat. <a href="https://www.scb.se/hitta-statistik/statistik-efter-amne/miljo/miljoekonomi-och-hallbar-utveckling/miljorakenskaper/produktrelaterat/Fordjupad-information/miljorakenskaperna-visar-hur-ekonomin-paverkar-miljo-och-naturresurser/">Läs mer</a>
+        </i></blockquote>
+        <br>
+    <p>
+      På så vis är det vi tidigare granskat en viktig del i klimatfrågan. Näringsgrenar och sektorer har stor påverkan. Genom energi förbrukning kan klimatpåverkan räknas. Dock har olika energislag olika miljöpåverkan. 
+      Produktion coh konsumtion beskriver ramen av landets ekonomi. Genom att granska BPN kan eventuella kopplingar mellan exemoelvis ekenomisk tillväxt och miljöpåverkan granskas. Efterfrågan, produktion och leverans har en stark koppling till både den ekenomiska faktoren, branchbundna faktoren och den privata faktoren. Individens påverkan och näringsgrenens påverkan. Genom en modell som det internationella organisationen för ekonomisk samarbete och utveckling (OECD) och Europeiska miljöbyrån har utvecklat en modell som beskriver just detta samband, hur ett eller flera miljöområden påverkas av hur samhället eller ekonomin ser ut. 
+      Denna modell kallas för DPSIR och står för drivkrafter, påverkan, status, inverkan och respons. Genom denna modell har det konstaterats att den ekonomiska bilden i varje nation påverkar den miljömässiga aspekten. Denna metod används i uppföljningen av Agenda 2030. SCB utvecklar detta,
+    </p>
+       <br>
+        <blockquote cite="https://www.scb.se/hitta-statistik/statistik-efter-amne/miljo/miljoekonomi-och-hallbar-utveckling/miljorakenskaper/produktrelaterat/Fordjupad-information/miljorakenskaperna-visar-hur-ekonomin-paverkar-miljo-och-naturresurser/">
+        <i>Alltmer jämförbar statistik produceras om kopplingen mellan miljö och ekonomi. Statistiken kan ligga till grund för till exempel klimatpolitiska beslut. Där behövs fakta och underlag som visar vilka ekonomiska styrmedel som fungerar. Besluten kan sedan få effekt på utsläppen av växthusgaser och minska den negativa påverkan på miljön. <a href="https://www.scb.se/hitta-statistik/statistik-efter-amne/miljo/miljoekonomi-och-hallbar-utveckling/miljorakenskaper/produktrelaterat/Fordjupad-information/miljorakenskaperna-visar-hur-ekonomin-paverkar-miljo-och-naturresurser/">Läs mer</a>
+        </i></blockquote>
+        <br>
+    <p>
+    Vi kan genom datan vi granskat för mål 13 konstatera följande; sektorer, näringgrenar och ekonomsika faktorer har en påverkan på mijön genom utsläpp, resursförbrukning och energiförbrukning. Genom mål 13, där målet är att minska just dessa faktorer har en föränding börjat att ske genom mätbara värden av utsläpp av koldioxidekvivalenter. Målet är under arbete och fler förändringar kommer förhoppningsvis att ske inom framtiden genom att granska data. Utvecklingskurvan har idag en positiv trend. Så vi hoppas att framtiden har en av samma slag.
+    </p>
+    <br>
+    <h3>Källförteckning</h3>
+    <p><br>
+    <b>Webbkällor</b>
+    <br><br>
+    13 bekämpa klimat förändringarna. (2021, december 27). UNDP. https://www.globalamalen.se/om-globala-malen/mal-13-bekampa-klimatforandringarna/ (Hämtad 2022-05-12).
+    <br><br>
+    Global uppvärmning. (2022, april 4). Wikipedia. https://sv.wikipedia.org/wiki/Global_uppv%C3%A4rmning (Hämtad 2022-05-12).
+    <br><br>
+    Indikatorer för hållbar utveckling. Statistiskmyndigheten, SCB. https://www.scb.se/hitta-statistik/statistik-efter-amne/miljo/miljoekonomi-och-hallbar-utveckling/indikatorer-for-hallbar-utveckling/ (Hämtad 2022-05-13).
+    <br><br>
+    Klimatförändringarna. WWF. https://www.wwf.se/klimat/klimatforandringar/ (Hämtad 2022-05-13).
+    <br><br>
+    Miljöräkenskaperna visar hur ekonomin påverkar miljö och naturresurser. Statistiskmyndigheten, SCB. https://www.scb.se/hitta-statistik/statistik-efter-amne/miljo/miljoekonomi-och-hallbar-utveckling/miljorakenskaper/produktrelaterat/Fordjupad-information/miljorakenskaperna-visar-hur-ekonomin-paverkar-miljo-och-naturresurser/ (Hämtad 2022-05-14).
+    <br><br>
+    Svensk konsumtion och produktion av mjölk och ost. Naturvårdsverket. https://sv.wikipedia.org/wiki/Global_uppv%C3%A4rmning (Hämtad 2022-05-14).
+    <br><br>
+    Svensk konsumtion och produktion av kött. Naturvårdsverket. https://sv.wikipedia.org/wiki/Global_uppv%C3%A4rmning (Hämtad 2022-05-14).
+    </p>
+  </div>
+    
+</body>
+
+{% include 'footer.html.twig' %}

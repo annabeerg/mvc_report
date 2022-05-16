@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Card;
+namespace App\Project;
 
 /**
  * Class Helpers
  */
 
-class Helpers
+class Helper
 {
     /**
      * Metod helper
@@ -23,7 +23,7 @@ class Helpers
         } elseif ($pointstwo < $pointsone) {
             if ($pointstwo <= 17) {
                 $gamer2 = $game->add();
-                $pointstwos = new GameCheck();
+                $pointstwos = new GameChecker();
                 $pointstwototal = $pointstwos ->getter($gamer2);
                 $pointstwo = $pointstwo + $pointstwototal;
             }

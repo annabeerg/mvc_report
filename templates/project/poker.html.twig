@@ -1,0 +1,28 @@
+{% include '/project/main.html.twig' %}
+
+<body>
+
+    <div class="content">
+        <h2>Draw Poker</h2>
+            <h4>Du har nu blivit tilldelad kort. Innan du kan se dem, vänligen satsa på dina kort.</h4>
+            <div class="space">
+                <img class="cards" src="{{ ('images/back.png') }}" alt="two of hearts">
+                <img class="cards" src="{{ ('images/back.png') }}" alt="two of hearts">
+                <img class="cards" src="{{ ('images/back.png') }}" alt="two of hearts">
+                <img class="cards" src="{{ ('images/back.png') }}" alt="two of hearts">
+                <img class="cards" src="{{ ('images/back.png') }}" alt="two of hearts">
+            <form method="post">
+                <fieldset>
+                    <label>
+                        Satsa:
+                    </label>
+                    <input type="text" name="bet" value="Skriv din summa här">
+                    <input type="submit" value="Submit">
+                </fieldset>
+            </form>
+            </div>
+    </div>
+    
+</body>
+
+{% include 'footer.html.twig' %}

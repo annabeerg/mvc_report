@@ -132,7 +132,7 @@ class Hand
 
     /**
      * Method add.
-     * @return string 
+     * @return string
      */
     public function add()
     {
