@@ -17,6 +17,7 @@ use App\Repository\ClimateChangeRepository;
 use App\Repository\ClimateSNIRepository;
 use App\Repository\BNPRepository;
 use App\Repository\TemperatureRepository;
+use App\Project\Data;
 
 class Project extends AbstractController
 {
@@ -53,6 +54,159 @@ class Project extends AbstractController
         return $this->render('project/home.html.twig', $data);
     }
 
+        /**
+     * @Route("/proj/reset",
+     * name="reset",
+     * methods={"GET","HEAD"}
+     * )
+     */
+    public function removesni(ManagerRegistry $doctrine,
+): Response {
+    $entityManager = $doctrine->getManager();
+    $sni = $entityManager->getRepository(ClimateSNI::class)->findAll();
+    $climate = $entityManager->getRepository(ClimateChange::class)->findAll();
+    $temp = $entityManager->getRepository(Temperature::class)->findAll();
+    $bnp = $entityManager->getRepository(BNP::class)->findAll();
+
+    foreach ($sni as $entity) {
+        $entityManager->remove($entity);
+    }
+
+    foreach ($climate as $entity) {
+        $entityManager->remove($entity);
+    }
+
+    foreach ($temp as $entity) {
+        $entityManager->remove($entity);
+    }
+
+    foreach ($bnp as $entity) {
+        $entityManager->remove($entity);
+    }
+
+    $csvFile = file('../public/data/sektor.csv');
+    $data = [];
+    foreach ($csvFile as $line) {
+        $data[] = str_getcsv($line);
+    }
+
+    $x = 0;
+    for ($z = 0; $z <= 8; $z++) {
+        $csv = $data[$z];
+        $result = $this->sektor($csv);
+
+        // tell Doctrine you want to (eventually) save the sni
+        // (no queries yet)
+        $entityManager->persist($result);
+    }
+
+    $csvFilesni = file('../public/data/sni.csv');
+    $data = [];
+    foreach ($csvFilesni as $line) {
+        $data[] = str_getcsv($line);
+    }
+
+    $x = 0;
+    for ($z = 0; $z <= 8; $z++) {
+        $csv = $data[$z];
+        $result = $this->sni($csv);
+
+        // tell Doctrine you want to (eventually) save the sni
+        // (no queries yet)
+        $entityManager->persist($result);
+    }
+
+    $csvFiletemp = file('../public/data/temp.csv');
+    $data = [];
+    foreach ($csvFiletemp as $line) {
+        $data[] = str_getcsv($line);
+    }
+
+    $x = 0;
+    for ($z = 0; $z <= 8; $z++) {
+        $csv = $data[$z];
+        $result = $this->temp($csv);
+
+        // tell Doctrine you want to (eventually) save the sni
+        // (no queries yet)
+        $entityManager->persist($result);
+    }
+
+    $csvFilebnp = file('../public/data/bnp.csv');
+    $data = [];
+    foreach ($csvFilebnp as $line) {
+        $data[] = str_getcsv($line);
+    }
+
+    $result = $this->bnp($data[0]);
+    $entityManager->persist($result);
+
+    // actually executes the queries (i.e. the INSERT query)
+    $entityManager->flush();
+
+    return $this->redirectToRoute('project');
+    }
+
+
+    public function sektor($csv) {
+        $sektor = new ClimateSNI();
+        $sektor->setField($csv[0]);
+        $sektor->setEight($csv[1]);
+        $sektor->setNine($csv[2]);
+        $sektor->setTen($csv[3]);
+        $sektor->setEleven($csv[4]);
+        $sektor->setTwelve($csv[5]);
+        $sektor->setThirteen($csv[6]);
+        $sektor->setFourteen($csv[7]);
+        $sektor->setFifteen($csv[8]);
+        $sektor->setSixteen($csv[9]);
+        $sektor->setSeventeen($csv[10]);
+
+        return $sektor;
+    }
+
+    public function sni($csv) {
+        $sni = new ClimateChange();
+        $sni->setField($csv[0]);
+        $sni->setEight($csv[1]);
+        $sni->setNine($csv[2]);
+        $sni->setTen($csv[3]);
+        $sni->setEleven($csv[4]);
+        $sni->setTwelve($csv[5]);
+        $sni->setThirteen($csv[6]);
+        $sni->setFourteen($csv[7]);
+        $sni->setFifteen($csv[8]);
+        $sni->setSixteen($csv[9]);
+        $sni->setSeventeen($csv[10]);
+
+        return $sni;
+    }
+
+    public function bnp($csv) {
+        $bnp = new BNP();
+        $bnp->setField($csv[0]);
+        $bnp->setEight($csv[1]);
+        $bnp->setNine($csv[2]);
+        $bnp->setTen($csv[3]);
+        $bnp->setEleven($csv[4]);
+        $bnp->setTwelve($csv[5]);
+        $bnp->setThirteen($csv[6]);
+        $bnp->setFourteen($csv[7]);
+        $bnp->setFifteen($csv[8]);
+        $bnp->setSixteen($csv[9]);
+        $bnp->setSeventeen($csv[10]);
+
+        return $bnp;
+    }
+
+    public function temp($csv) {
+        $temp = new Temperature();
+        $temp->setYear($csv[0]);
+        $temp->setMiddleTemp($csv[1]);
+
+        return $temp;
+    }
+
     /**
      * @Route("/proj/about",
      * name="project-about")
@@ -60,294 +214,5 @@ class Project extends AbstractController
     public function about(): Response
     {
         return $this->render('project/home.html.twig');
-    }
-
-    /**
-     * @Route("/proj/add",
-     * name="climateadd",
-     * methods={"GET","HEAD"}
-     * )
-     */
-    public function createdata(): Response
-    {
-        return $this->render('project/addata.html.twig');
-    }
-
-    /**
-     * @Route(
-     *      "/proj/add",
-     *      name="climateadd-process",
-     *      methods={"POST"}
-     * )
-     */
-    public function createdataprocess(
-        ManagerRegistry $doctrine
-    ): Response {
-        $entityManager = $doctrine->getManager();
-
-        $climate = new ClimateChange();
-        $climate->setField($_POST['field']);
-        $climate->setEight($_POST['8']);
-        $climate->setNine($_POST['9']);
-        $climate->setTen($_POST['10']);
-        $climate->setEleven($_POST['11']);
-        $climate->setTwelve($_POST['12']);
-        $climate->setThirteen($_POST['13']);
-        $climate->setFourteen($_POST['14']);
-        $climate->setFifteen($_POST['15']);
-        $climate->setSixteen($_POST['16']);
-        $climate->setSeventeen($_POST['17']);
-
-        // tell Doctrine you want to (eventually) save the climate
-        // (no queries yet)
-        $entityManager->persist($climate);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-
-        return $this->redirectToRoute('project');
-    }
-
-    /**
-     * @Route("/proj/addsni",
-     * name="climateaddsni",
-     * methods={"GET","HEAD"}
-     * )
-     */
-    public function createdatasni(): Response
-    {
-        return $this->render('project/addata.html.twig');
-    }
-
-
-
-    /**
-     * @Route(
-     *      "/proj/addsni",
-     *      name="climateaddd-process",
-     *      methods={"POST"}
-     * )
-     */
-    public function dataprocess(
-        ManagerRegistry $doctrine
-    ): Response {
-        $entityManager = $doctrine->getManager();
-
-        $sni = new ClimateSNI();
-        $sni->setField($_POST['field']);
-        $sni->setEight($_POST['8']);
-        $sni->setNine($_POST['9']);
-        $sni->setTen($_POST['10']);
-        $sni->setEleven($_POST['11']);
-        $sni->setTwelve($_POST['12']);
-        $sni->setThirteen($_POST['13']);
-        $sni->setFourteen($_POST['14']);
-        $sni->setFifteen($_POST['15']);
-        $sni->setSixteen($_POST['16']);
-        $sni->setSeventeen($_POST['17']);
-
-        // tell Doctrine you want to (eventually) save the sni
-        // (no queries yet)
-        $entityManager->persist($sni);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-
-        return $this->redirectToRoute('climateaddsni');
-    }
-
-    /**
-     * @Route("/proj/addbnp",
-     * name="bnpadd",
-     * methods={"GET","HEAD"}
-     * )
-     */
-    public function bnpdata(): Response
-    {
-        return $this->render('project/addata.html.twig');
-    }
-
-    /**
-     * @Route(
-     *      "/proj/addbnp",
-     *      name="bnpadd-process",
-     *      methods={"POST"}
-     * )
-     */
-    public function bnpdataprocess(
-        ManagerRegistry $doctrine
-    ): Response {
-        $entityManager = $doctrine->getManager();
-
-        $bnp = new BNP();
-        $bnp->setField($_POST['field']);
-        $bnp->setEight($_POST['8']);
-        $bnp->setNine($_POST['9']);
-        $bnp->setTen($_POST['10']);
-        $bnp->setEleven($_POST['11']);
-        $bnp->setTwelve($_POST['12']);
-        $bnp->setThirteen($_POST['13']);
-        $bnp->setFourteen($_POST['14']);
-        $bnp->setFifteen($_POST['15']);
-        $bnp->setSixteen($_POST['16']);
-        $bnp->setSeventeen($_POST['17']);
-
-        // tell Doctrine you want to (eventually) save the bnp
-        // (no queries yet)
-        $entityManager->persist($bnp);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-
-        return $this->redirectToRoute('project');
-    }
-
-
-    /**
-     * @Route("/proj/addtemp",
-     * name="climateaddtemp",
-     * methods={"GET","HEAD"}
-     * )
-     */
-    public function createdatatemp(): Response
-    {
-        return $this->render('project/addatatemp.html.twig');
-    }
-
-
-
-    /**
-     * @Route(
-     *      "/proj/addtemp",
-     *      name="climateaddtemp-process",
-     *      methods={"POST"}
-     * )
-     */
-    public function dataprocesstemp(
-        ManagerRegistry $doctrine
-    ): Response {
-        $entityManager = $doctrine->getManager();
-
-        $temp = new Temperature();
-        $temp->setMiddleTemp($_POST['middle_temp']);
-        $temp->setYear($_POST['year']);
-
-        // tell Doctrine you want to (eventually) save the temp
-        // (no queries yet)
-        $entityManager->persist($temp);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-
-        return $this->redirectToRoute('climateaddtemp');
-    }
-
-
-    /**
-     *  @Route("/library/{id}",
-     *  name="book-process",
-     *  methods={"GET"}
-     * )
-     */
-    public function book(
-        ManagerRegistry $doctrine,
-        string $id
-    ): Response {
-        $entityManager = $doctrine->getManager();
-        $library = $entityManager->getRepository(Library::class)->find($id);
-
-        if (!$library) {
-            throw $this->createNotFoundException(
-                'No library found for id ' . $id
-            );
-        }
-
-        $data = [
-            'library' => $library
-        ];
-
-        return $this->render('library/one.html.twig', $data);
-    }
-
-
-
-    /**
-     * @Route("/library/update/{id}",
-     * name="update-book",
-     * methods={"GET","HEAD"}
-     * )
-     */
-    public function updateBook(
-        ManagerRegistry $doctrine,
-        int $id
-    ): Response {
-        $entityManager = $doctrine->getManager();
-        $library = $entityManager->getRepository(Library::class)->find($id);
-
-        if (!$library) {
-            throw $this->createNotFoundException(
-                'No library found for id ' . $id
-            );
-        }
-
-        $data = [
-            'library' => $library
-        ];
-
-        return $this->render('library/libraryupdate.html.twig', $data);
-    }
-
-    /**
-     *  @Route("/library/update/{id}",
-     *  name="update-book-process",
-     *  methods={"POST"}
-     * )
-     */
-    public function updatesBook(
-        ManagerRegistry $doctrine,
-        int $id
-    ): Response {
-        $entityManager = $doctrine->getManager();
-        $library = $entityManager->getRepository(Library::class)->find($id);
-
-        if (!$library) {
-            throw $this->createNotFoundException(
-                'No library found for id' . $id
-            );
-        }
-
-        $library->setNamn($_POST['name']);
-        $library->setTitel($_POST['title']);
-        $library->setISBN($_POST['number']);
-        $library->setBild($_POST['picture']);
-        $entityManager->flush();
-
-        return $this->redirectToRoute('library');
-    }
-
-
-    /**
-     *  @Route("/proj/delete/{id}",
-     *  name="delete-bnp",
-     *  methods={"GET","HEAD"}
-     * )
-     */
-    public function deleteBook(
-        ManagerRegistry $doctrine,
-        int $id
-    ): Response {
-        $entityManager = $doctrine->getManager();
-        $library = $entityManager->getRepository(ClimateChange::class)->find($id);
-
-        if (!$library) {
-            throw $this->createNotFoundException(
-                'No library found for id' . $id
-            );
-        }
-
-        $entityManager->remove($library);
-        $entityManager->flush();
-
-        return $this->redirectToRoute('library');
     }
 }

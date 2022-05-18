@@ -35,12 +35,10 @@
         </blockquote>
         <p><b>Medeltemperatur över tid.</b></p>
         <table>
-            <th>Id</th>
             <th>År</th>
             <th>Medeltemperatur</th>
             {% for i in temp %}
                 <tr>
-                    <td>{{ i.id }}</td>
                     <td>{{ i.year }}</td>
                     <td>{{ i.middletemp }} grader celcius</td>
                 </tr>
@@ -71,7 +69,6 @@
         <p><b>Utsläpp av växthusgaser per aggregerad näringsgren SNI 2007.</b></p>
         <p><i>Enhet:</i> Tusen ton koldioxidekvivalenter</p>
         <table>
-            <th>Id</th>
             <th>Område</th>
             <th>2008</th>
             <th>2009</th>
@@ -85,7 +82,6 @@
             <th>2017</th>
             {% for i in climate %}
                 <tr>
-                    <td>{{ i.id }}</td>
                     <td>{{ i.field }}</td>
                     <td>{{ i.eight }}</td>
                     <td>{{ i.nine }}</td>
@@ -142,7 +138,6 @@
         <br>
         <p><i>Enhet:</i> Tusen ton koldioxidekvivalenter</p>
         <table>
-            <th>Id</th>
             <th>Område</th>
             <th>2008</th>
             <th>2009</th>
@@ -156,7 +151,6 @@
             <th>2017</th>
             {% for i in sni %}
                 <tr>
-                    <td>{{ i.id }}</td>
                     <td>{{ i.field }}</td>
                     <td>{{ i.eight }}</td>
                     <td>{{ i.nine }}</td>
@@ -226,7 +220,6 @@
         <p><b>BNP, fasta priser, Referensår 2015:</b></p>
         <br>
         <table>
-            <th>Id</th>
             <th>Område</th>
             <th>2008</th>
             <th>2009</th>
@@ -240,7 +233,6 @@
             <th>2017</th>
             {% for i in bnp %}
                 <tr>
-                    <td>{{ i.id }}</td>
                     <td>{{ i.field }}</td>
                     <td>{{ i.eight }}</td>
                     <td>{{ i.nine }}</td>
