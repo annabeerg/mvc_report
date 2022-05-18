@@ -107,7 +107,7 @@ class Project extends AbstractController
     }
 
     $x = 0;
-    for ($z = 0; $z <= 8; $z++) {
+    for ($z = 0; $z <= 9; $z++) {
         $csv = $data[$z];
         $result = $this->sni($csv);
 
@@ -123,7 +123,7 @@ class Project extends AbstractController
     }
 
     $x = 0;
-    for ($z = 0; $z <= 8; $z++) {
+    for ($z = 0; $z <= 14; $z++) {
         $csv = $data[$z];
         $result = $this->temp($csv);
 
