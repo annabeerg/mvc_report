@@ -132,7 +132,7 @@ class Cards extends AbstractController
         $hand = $session->get("cards/cardhand") ?? new Hand();
         $count = $session->get("count") ?? 52;
 
-        $number = $_POST['number'];
+        $number = filter_input(INPUT_POST, 'number');
 
         $hand->sethand($number);
 
@@ -173,8 +173,8 @@ class Cards extends AbstractController
      */
     public function processor(): Response
     {
-        $cards = $_POST['number'];
-        $players = $_POST['amount'];
+        $cards = filter_input(INPUT_POST, 'number');
+        $players = filter_input(INPUT_POST, 'amount');
         if (($cards * $players) > 52) {
             $data = [
                 'hand' => null
@@ -190,6 +190,7 @@ class Cards extends AbstractController
             ];
             return $this->render('cards/game.html.twig', $data);
         }
+        return "error";
     }
 
     /**

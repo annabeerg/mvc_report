@@ -58,6 +58,7 @@ class Hand
     /**
      * Method show
      * @return array
+     * @param array<int, String> $this->deck
      */
     public function show(): array
     {
@@ -94,7 +95,7 @@ class Hand
     /**
      * Method sethand. Alternative to addhand method. Also sets card variable.
      */
-    public function sethand(int $number): void
+    public function sethand(mixed $number): void
     {
         global $die;
         global $value;
@@ -122,6 +123,7 @@ class Hand
     /**
      * Method hand
      * @return array of array of cards
+     * @param array<int, String> $csv
      */
     public function hand(): array
     {
@@ -161,6 +163,7 @@ class Hand
 
     /**
      * Method getAsString returns array of deck.
+     * @param array<int, String> $this->list
      * @return array
      */
     public function getAsString(): array
@@ -173,6 +176,7 @@ class Hand
 
     /**
      * Method getAsString return aray of hand.
+     * @param array<int, String> $this->list
      * @return array
      */
     public function getAsStringhand(): array

@@ -21,9 +21,9 @@ class Libraries extends AbstractController
      * )
      */
     public function allBooks(
-        LibraryRepository $LibraryRepository
+        LibraryRepository $libraryrepository
     ): Response {
-        $library = $LibraryRepository
+        $library = $libraryrepository
             ->findAll();
 
         $data = [
@@ -57,10 +57,10 @@ class Libraries extends AbstractController
         $entityManager = $doctrine->getManager();
 
         $library = new Library();
-        $library->setNamn($_POST['name']);
-        $library->setTitel($_POST['title']);
-        $library->setISBN($_POST['number']);
-        $library->setBild($_POST['picture']);
+        $library->setNamn(filter_input(INPUT_POST, 'name'));
+        $library->setTitel(filter_input(INPUT_POST, 'title'));
+        $library->setISBN(filter_input(INPUT_POST, 'number'));
+        $library->setBild(filter_input(INPUT_POST, 'picture'));
 
         // tell Doctrine you want to (eventually) save the library
         // (no queries yet)
@@ -146,10 +146,10 @@ class Libraries extends AbstractController
             );
         }
 
-        $library->setNamn($_POST['name']);
-        $library->setTitel($_POST['title']);
-        $library->setISBN($_POST['number']);
-        $library->setBild($_POST['picture']);
+        $library->setNamn(filter_input(INPUT_POST, 'name'));
+        $library->setTitel(filter_input(INPUT_POST, 'title'));
+        $library->setISBN(filter_input(INPUT_POST, 'number'));
+        $library->setBild(filter_input(INPUT_POST, 'picture'));
         $entityManager->flush();
 
         return $this->redirectToRoute('library');
