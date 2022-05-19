@@ -4,14 +4,13 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.0.2",
+        "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.11",
-        "league/csv": "^9.8",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.3",
         "sensio/framework-extra-bundle": "^6.2",
@@ -110,7 +109,10 @@
         "csfix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
         "phpcs": "tools/php-codesniffer/vendor/bin/phpcs --standard=PSR12 src",
         "phpcbf": "tools/php-codesniffer/vendor/bin/phpcbf --standard=PSR12 src",
-        "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
+        "phpunit": [
+            "@putenv XDEBUG_MODE=coverage",
+            "php vendor/bin/phpunit"
+        ],
         "phpdoc": "tools/phpdoc/phpdoc"
     },
     "conflict": {

@@ -28,7 +28,7 @@ class Playerstest extends TestCase
     public function testget()
     {
         $game = new Players();
-        $game->set("one");
-        $this->assertEquals($game->get(), "one");
+        $game->set(1);
+        $this->assertEquals($game->get(), 1);
     }
 }
