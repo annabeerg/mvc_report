@@ -4,21 +4,21 @@ imports:
 filter:
     excluded_paths: [vendor/*, tests/*]
 
-# build:
-#     nodes:
-#         my-tests:
-#             environment:
-#                 php:
-#                     version: 8.1
-#         analysis:
-#             tests:
-#                 override:
-#                     - php-scrutinizer-run
-#     tests:
-#         override:
-#             -
-#                 # command: "composer phpunit"
-#                 command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
-#                 coverage:
-#                     file: "build/coverage.clover"
-#                     format: "php-clover"
+build:
+    nodes:
+        my-tests:
+            environment:
+                php:
+                    version: 8.1
+        analysis:
+            tests:
+                override:
+                    - php-scrutinizer-run
+    tests:
+        override:
+            -
+                # command: "composer phpunit"
+                command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
+                coverage:
+                    file: "build/coverage.clover"
+                    format: "php-clover"
