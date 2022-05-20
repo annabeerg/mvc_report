@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1653036887">
-  <project timestamp="1653036887">
+<coverage generated="1653037210">
+  <project timestamp="1653037210">
     <file name="C:\Users\annab\dbwebb-kurser\mvc\me\report\src\Card\Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="4" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="5" elements="10" coveredelements="8"/>
@@ -105,7 +105,7 @@
     </file>
     <file name="C:\Users\annab\dbwebb-kurser\mvc\me\report\src\Card\GameCheck.php">
       <class name="App\Card\GameCheck" namespace="global">
-        <metrics complexity="15" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="25" elements="32" coveredelements="25"/>
+        <metrics complexity="15" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="23" elements="32" coveredelements="23"/>
       </class>
       <line num="16" type="method" name="getter" visibility="public" complexity="6" crap="6.13" count="3"/>
       <line num="18" type="stmt" count="3"/>
@@ -121,25 +121,25 @@
       <line num="28" type="stmt" count="1"/>
       <line num="30" type="stmt" count="3"/>
       <line num="32" type="stmt" count="3"/>
-      <line num="40" type="method" name="getters" visibility="public" complexity="9" crap="9.45" count="4"/>
+      <line num="40" type="method" name="getters" visibility="public" complexity="9" crap="11.06" count="4"/>
       <line num="42" type="stmt" count="4"/>
-      <line num="43" type="stmt" count="1"/>
+      <line num="43" type="stmt" count="2"/>
       <line num="44" type="stmt" count="4"/>
       <line num="45" type="stmt" count="2"/>
       <line num="46" type="stmt" count="4"/>
-      <line num="47" type="stmt" count="1"/>
+      <line num="47" type="stmt" count="0"/>
       <line num="48" type="stmt" count="4"/>
       <line num="49" type="stmt" count="0"/>
       <line num="50" type="stmt" count="4"/>
-      <line num="51" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="0"/>
       <line num="52" type="stmt" count="4"/>
       <line num="53" type="stmt" count="0"/>
       <line num="54" type="stmt" count="4"/>
       <line num="55" type="stmt" count="0"/>
       <line num="56" type="stmt" count="4"/>
-      <line num="57" type="stmt" count="1"/>
+      <line num="57" type="stmt" count="2"/>
       <line num="59" type="stmt" count="4"/>
-      <metrics loc="62" ncloc="49" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="25" elements="32" coveredelements="25"/>
+      <metrics loc="62" ncloc="49" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="23" elements="32" coveredelements="23"/>
     </file>
     <file name="C:\Users\annab\dbwebb-kurser\mvc\me\report\src\Card\Hand.php">
       <class name="App\Card\Hand" namespace="global">
@@ -963,6 +963,6 @@
       <line num="46" type="stmt" count="0"/>
       <metrics loc="79" ncloc="36" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
     </file>
-    <metrics files="27" loc="3053" ncloc="2463" classes="26" methods="180" coveredmethods="31" conditionals="0" coveredconditionals="0" statements="620" coveredstatements="115" elements="800" coveredelements="146"/>
+    <metrics files="27" loc="3053" ncloc="2463" classes="26" methods="180" coveredmethods="31" conditionals="0" coveredconditionals="0" statements="620" coveredstatements="113" elements="800" coveredelements="144"/>
   </project>
 </coverage>
