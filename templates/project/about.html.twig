@@ -64,12 +64,12 @@
         Ett annat problem som jag hade var att få data på kodtäckning av min kod. Det fungerar inte i phpmetrics då composer phpunit inte fungerar, samt så läser inte Scrutinizer alla testfiler vilket skapar fel statistik. Scrutinizer läser endast 5 tester och 5 assertions, medan det finns 
         40 tester och 49 assertions. Det fungerar att läsa kostäckning genom den data kommandot "XDEBUG_MODE=coverage vendor/bin/phpunit", som man kan läsa här <a href="https://www.student.bth.se/~anbj21/dbwebb-kurser/mvc/me/report/docs/coverage/coverage/">KODTÄCKNING</a>. Jag har kopierat datan som är 
         genererad i build mappen och placerat den i docs mappen, för att kunna visa kodtäcknigen. Projektets kodtäckning syns korrekt i scrutinizer medan kodtäckning för övriga klasser är felaktiga. Koden har en kodtäckning på 79.31% i dem klasser som är från tidigare kursmoment medan projektet har en kodtäckning på 100%. DocBlock har använts för att dokumentera metoder och klasser och dokumentation finns
-        i listan av länkar ovan.
+        i listan av länkar ovan. Enhetstester finns till alla reports klasser utöver repositiry, entity, controller and kernel. 
         <br>
         Jag använda mig främst av phpmetrics för att läsa om min kodkvalitet. När jad hade gjort klart koden för projektet och genrerat data från Scrutinizer och phpmetrics insåg jag att filen jag för stor och metoderna för komplicerade. Projektet i controllern hade en cyclomatic complexity på 18. Jag valde 
         därför att dela upp reset och adddata till två metoder istället för en och sedan skapa flera mindre metoder för att hantera klasserna i entity. Genom klassen Data där dem mindre klasserna som skapar och sätter data i entity objektet, samt dela upp en komplex metod till två mindre som 
         i sin tur hanterar flertalet mindre kunde cyclomatic complexity minska till 12. Klassen Projekt i controllern har ändå utöver ändringarna för att minska filen en volym av 1658.54, vilket är min näst största klass. Efter tidigare kursmoment, försökte jag göra ett aktivt val att göra fler mindre metoder, 
-        vilket jag tyckte blev bra genom att det även förbättrade min kodkvalitet överlag. Genom att kunna granska data i Scrutinizer och phpmetrics får man en större förståelse av att försöka strukturera, effiktivisera och minimera. Hellre fler mindre metoder än få stora.
+        vilket jag tyckte blev bra genom att det även förbättrade min kodkvalitet överlag. Genom att kunna granska data i Scrutinizer och phpmetrics får man en större förståelse av att försöka strukturera, effiktivisera och minimera. Hellre fler mindre metoder än få stora. 
         <br>
         <br>
         Jag tycker att denna kurs har varit otroligt lärorik, ganska svår men vänligt rolig. Det har varit passande hastighet på tempot samt passande kursmaterial. Kul att utvecklas mer inom php som är ett språk som man hanterade när jag var nybörjare i detta program.

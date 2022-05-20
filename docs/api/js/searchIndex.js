@@ -631,31 +631,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-Project.html#method_reset"
         },                {
-            "fqsen": "\\App\\Controller\\Project\u003A\u003Asektor\u0028\u0029",
-            "name": "sektor",
-            "summary": "Functions\u0020to\u0020set\u0020values\u0020to\u0020object\u0020ClimateSNI\u0020before\u0020returning\u0020object\nto\u0020add\u0020to\u0020table\u0020ClimateSNI\u0020in\u0020databases.",
-            "url": "classes/App-Controller-Project.html#method_sektor"
-        },                {
-            "fqsen": "\\App\\Controller\\Project\u003A\u003Asni\u0028\u0029",
-            "name": "sni",
-            "summary": "Functions\u0020to\u0020set\u0020values\u0020to\u0020object\u0020CLimateChange\u0020before\u0020returning\u0020object\nto\u0020add\u0020to\u0020table\u0020ClimateChange\u0020in\u0020databases.",
-            "url": "classes/App-Controller-Project.html#method_sni"
-        },                {
-            "fqsen": "\\App\\Controller\\Project\u003A\u003Abnp\u0028\u0029",
-            "name": "bnp",
-            "summary": "Functions\u0020to\u0020set\u0020values\u0020to\u0020object\u0020\u0020BNP\u0020before\u0020returning\u0020object\nto\u0020add\u0020to\u0020table\u0020BNP\u0020in\u0020databases.",
-            "url": "classes/App-Controller-Project.html#method_bnp"
-        },                {
-            "fqsen": "\\App\\Controller\\Project\u003A\u003Atemp\u0028\u0029",
-            "name": "temp",
-            "summary": "Functions\u0020to\u0020set\u0020values\u0020to\u0020object\u0020Temperature\u0020before\u0020returning\u0020object\nto\u0020add\u0020to\u0020table\u0020Temperature\u0020in\u0020databases.",
-            "url": "classes/App-Controller-Project.html#method_temp"
-        },                {
-            "fqsen": "\\App\\Controller\\Project\u003A\u003Aabout\u0028\u0029",
-            "name": "about",
-            "summary": "",
-            "url": "classes/App-Controller-Project.html#method_about"
-        },                {
             "fqsen": "\\App\\Controller\\Project\u003A\u003Aresetter\u0028\u0029",
             "name": "resetter",
             "summary": "Reset\u0020tables\u0020ClimateChange,\u0020BNP,\u0020ClimateSNI\u0020and\u0020Temperature.",
@@ -665,6 +640,11 @@ Search.appendIndex(
             "name": "adddata",
             "summary": "Re\u002Denter\u0020data\u0020from\u0020csv\u0020files\u0020using\u0020functions\u003A\u0020sektion,\u0020sni,\u0020bnp,\u0020temp.",
             "url": "classes/App-Controller-Project.html#method_adddata"
+        },                {
+            "fqsen": "\\App\\Controller\\Project\u003A\u003Aabout\u0028\u0029",
+            "name": "about",
+            "summary": "",
+            "url": "classes/App-Controller-Project.html#method_about"
         },                {
             "fqsen": "\\App\\Entity\\BNP",
             "name": "BNP",
@@ -1346,6 +1326,31 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Repository-TemperatureRepository.html#method_remove"
         },                {
+            "fqsen": "\\App\\Project\\Data",
+            "name": "Data",
+            "summary": "Class\u0020Data.",
+            "url": "classes/App-Project-Data.html"
+        },                {
+            "fqsen": "\\App\\Project\\Data\u003A\u003Asektor\u0028\u0029",
+            "name": "sektor",
+            "summary": "Functions\u0020to\u0020set\u0020values\u0020to\u0020object\u0020ClimateSNI\u0020before\u0020returning\u0020object\nto\u0020add\u0020to\u0020table\u0020ClimateSNI\u0020in\u0020databases.",
+            "url": "classes/App-Project-Data.html#method_sektor"
+        },                {
+            "fqsen": "\\App\\Project\\Data\u003A\u003Asni\u0028\u0029",
+            "name": "sni",
+            "summary": "Functions\u0020to\u0020set\u0020values\u0020to\u0020object\u0020CLimateChange\u0020before\u0020returning\u0020object\nto\u0020add\u0020to\u0020table\u0020ClimateChange\u0020in\u0020databases.",
+            "url": "classes/App-Project-Data.html#method_sni"
+        },                {
+            "fqsen": "\\App\\Project\\Data\u003A\u003Abnp\u0028\u0029",
+            "name": "bnp",
+            "summary": "Functions\u0020to\u0020set\u0020values\u0020to\u0020object\u0020\u0020BNP\u0020before\u0020returning\u0020object\nto\u0020add\u0020to\u0020table\u0020BNP\u0020in\u0020databases.",
+            "url": "classes/App-Project-Data.html#method_bnp"
+        },                {
+            "fqsen": "\\App\\Project\\Data\u003A\u003Atemp\u0028\u0029",
+            "name": "temp",
+            "summary": "Functions\u0020to\u0020set\u0020values\u0020to\u0020object\u0020Temperature\u0020before\u0020returning\u0020object\nto\u0020add\u0020to\u0020table\u0020Temperature\u0020in\u0020databases.",
+            "url": "classes/App-Project-Data.html#method_temp"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -1370,6 +1375,11 @@ Search.appendIndex(
             "name": "App",
             "summary": "",
             "url": "namespaces/app.html"
+        },                {
+            "fqsen": "\\App\\Project",
+            "name": "Project",
+            "summary": "",
+            "url": "namespaces/app-project.html"
         },                {
             "fqsen": "\\App\\Repository",
             "name": "Repository",
