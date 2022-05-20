@@ -41,7 +41,6 @@ class CardGraphictest extends TestCase
     {
         $game = new CardGraphic();
 
-        $this->assertEquals("2 of hearts", $game->getAsString(1));
-        $this->assertEquals("5 of hearts", $game->getAsString(4));
+        $this->assertIsString($game->getAsString());
     }
 }

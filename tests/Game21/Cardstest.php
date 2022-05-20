@@ -36,7 +36,7 @@ class Cardstest extends TestCase
      */
     public function testget()
     {
-        $game = new GameCheck();
+        $game = new Card();
 
         $this->assertEquals(3, $game->get(3));
         $this->assertEquals(88, $game->get(88));

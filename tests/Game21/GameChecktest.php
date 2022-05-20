@@ -18,7 +18,7 @@ class GameChecktest extends TestCase
     public function testCreateWithNoArguments()
     {
         $game = new GameCheck();
-        $this->assertInstanceOf("App\GameCheck\GameCheck", $game);
+        $this->assertInstanceOf("App\Card\GameCheck", $game);
     }
 
     /**

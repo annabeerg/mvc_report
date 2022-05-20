@@ -16,7 +16,7 @@ class GraphicJokertest extends TestCase
     public function testCreateWithNoArguments()
     {
         $game = new CardGraphicJoker();
-        $this->assertInstanceOf("App\Card\CardGraphic", $game);
+        $this->assertInstanceOf("App\Card\CardGraphicJoker", $game);
     }
 
     /**
@@ -41,8 +41,7 @@ class GraphicJokertest extends TestCase
     {
         $game = new CardGraphicJoker();
 
-        $this->assertEquals("2 of hearts", $game->getAsString(1));
-        $this->assertEquals("5 of hearts", $game->getAsString(4));
+        $this->assertIsString($game->getAsString());
     }
 
     /**
