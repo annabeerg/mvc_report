@@ -24,6 +24,9 @@
             <li>
                 <a href="https://scrutinizer-ci.com/g/annabeerg/mvc_report/">Scrutinizer</a>
             </li>
+            <li>
+                <a href="https://www.student.bth.se/~anbj21/dbwebb-kurser/mvc/me/report/docs/coverage/coverage/">Här kan du se kodtäckning, pga fel i scruitinizer och phpmetrics</a>
+            </li>
         </ul>
         <br>
         <br>
@@ -41,24 +44,38 @@
         metoden resetter raderar data genom att hitta all data genom repository metoden findAll och sedan använda entityManagers metod remove(varje entity tillhörande tabellen per klass) genom en foreach loop som raderar alla entitys.
         Sedan används entityManager metoden flush för att spara alla ändringar sparade i entityManagern. metoden adddata gör resetters motsats, genom att läsa filerna med file() som läser filens innehåll till en array. Sedan för varje rad i arrayen
         från csv filen använvänds den andra inbyggda metoden str_getcsv så att varje strängen från csv filen till ännu en array med korrekt data i strängformat med varje cell som en sträng från strängen. På så vis skapas en array för varje rad, och läggs
-        läggs till i en stor array. För att sedan använda denna data ittereras arrayen i en for loop som skickar varje array i arrayen för att kalla på flera mindre metoder sektor, bnp, sni och temp som sätter värden till entiryn. Objekt från varje entity returneras
+        läggs till i en stor array. För att sedan använda denna data ittereras arrayen i en for loop som skickar varje array i arrayen för att kalla på flera mindre metoder i klassen Data; sektor, bnp, sni och temp som sätter värden till varje nyskapad entity. Objekt från varje entity returneras
         och sparas med entityManager metoden flush för att läggas till i vardera tabell i databasen. På så vis resettas databasens tabeller med ursprungliga datan från csv filerna.
         Den största svårigheten var att lösa problemet med att kunna resetta databsens tabellers innehåll. Genom denna svårighet uppstod problemet att radera all data samt att kunna lägga till data från csv filer. 
         Genom att läsa på om doctrine kunde jag lösa problem ett och sedan lösa problem två. Försökte använda league/csv, vilket jag inte fick att fungera. Den kunde inte hitta filen för att läsa datan. Men genom att använda dem inbyggda metoderna file() och str_getcsv
         kunde problemet lösas relativt smidigt. Men svårigheten var att det tog tid att lösa. I övrigt tyckte jad att projektet hade en lagom svårighet passande kursen. 
         <br>
         <br>
-
+        Utseendet på hemsidan skiljer från report sidan genom ändrat färgtema, ändring av style på headern med border samt ändrad färg i navbaren samt ändrad typografi på hela webbplatsen vilket gör att sidorna skiljer sig utseendemässigt. Denna stylesheet finns i publica mappen css och 
+        heter project.css. Hemsidan är lättnavigerad och enkel att förstå strukturen på hemsidan. Poängtering har lagt på att försöka porträttera data genom tabeller, diagram och visuella prorträttering av procent för att underlätta förståelsen av data för användaren.
+        <br>
+        <br>
+        Rättning av kod går phpcs genom utan anmärkning. Både phpmd och phpstan har anmärkningar. Majoriteten av anmärkningarna är från repository och entoty klasserna, vilket jag inte har rättat efter instruktioner från Miakel från discord. 
+        Det finns några övriga anmärkningar som jag inte kan rätta på grund av att jag inte funnit någon lösning till problemen. Jag har kommenterat i koden på dem ställen problemen finns. Ett exempel på ett sådant problem var 
+        itteration av csv filer när den har blicit läst av file(). En foreach loop fungerade men både phpstan och phpmd ger anmärkning på detta. Har försökt hitta någon annan lösning utan lycka. Försökte använda league/csv för att lösa läsning av
+        csv filerna men fick det inte att fungera. Därav fann jag lösningen att läsa filerna med file() och sedan skapa arrays genom at itterera igenom datan och göra dem till strängar i arrays. Det finns även några fel från tidigare kursmoment som, jag inte heller funnit någon lösning på.
+        <br>
+        <br>
+        Ett annat problem som jag hade var att få data på kodtäckning av min kod. Det fungerar inte i phpmetrics då composer phpunit inte fungerar, samt så läser inte Scrutinizer alla testfiler vilket skapar fel statistik. Scrutinizer läser endast 5 tester och 5 assertions, medan det finns 
+        40 tester och 49 assertions. Det fungerar att läsa kostäckning genom den data kommandot "XDEBUG_MODE=coverage vendor/bin/phpunit", som man kan läsa här <a href="https://www.student.bth.se/~anbj21/dbwebb-kurser/mvc/me/report/docs/coverage/coverage/">KODTÄCKNING</a>. Jag har kopierat datan som är 
+        genererad i build mappen och placerat den i docs mappen, för att kunna visa kodtäcknigen. Projektets kodtäckning syns korrekt i scrutinizer medan kodtäckning för övriga klasser är felaktiga. Koden har en kodtäckning på 79.31% i dem klasser som är från tidigare kursmoment medan projektet har en kodtäckning på 100%. DocBlock har använts för att dokumentera metoder och klasser och dokumentation finns
+        i listan av länkar ovan.
+        <br>
+        Jag använda mig främst av phpmetrics för att läsa om min kodkvalitet. När jad hade gjort klart koden för projektet och genrerat data från Scrutinizer och phpmetrics insåg jag att filen jag för stor och metoderna för komplicerade. Projektet i controllern hade en cyclomatic complexity på 18. Jag valde 
+        därför att dela upp reset och adddata till två metoder istället för en och sedan skapa flera mindre metoder för att hantera klasserna i entity. Genom klassen Data där dem mindre klasserna som skapar och sätter data i entity objektet, samt dela upp en komplex metod till två mindre som 
+        i sin tur hanterar flertalet mindre kunde cyclomatic complexity minska till 12. Klassen Projekt i controllern har ändå utöver ändringarna för att minska filen en volym av 1658.54, vilket är min näst största klass. Efter tidigare kursmoment, försökte jag göra ett aktivt val att göra fler mindre metoder, 
+        vilket jag tyckte blev bra genom att det även förbättrade min kodkvalitet överlag. Genom att kunna granska data i Scrutinizer och phpmetrics får man en större förståelse av att försöka strukturera, effiktivisera och minimera. Hellre fler mindre metoder än få stora.
         <br>
         <br>
         Jag tycker att denna kurs har varit otroligt lärorik, ganska svår men vänligt rolig. Det har varit passande hastighet på tempot samt passande kursmaterial. Kul att utvecklas mer inom php som är ett språk som man hanterade när jag var nybörjare i detta program.
         Jag är väldigt nöjd med denna kurs. Skulle absolut ge kursen 10/10 och kunna rekommendera den till andra.
         </p>
   </div>
-
-Din about-sida skall innehålla en summering där du berättar om projektets kodkvalitet. Berätta vilka eventuella åtgärder du gjort för att kvalitetssäkra projektet och hur du jobbat med kodkvaliteten och vilka verktyg du använt. Har du fokuserat på några speciella saker, verktyg eller metrics, så kan du berätta om dem.
-
-För varje krav du implementerat, dvs 1-3, 4, 5, 6, skriver du ett textstycke om ca 5-10 meningar där du beskriver hur du löste kravet. Poängsättningen tar sin start i din text så se till att skriva väl för att undvika poängavdrag. Missar du att skriva/dokumentera din lösning så blir det 0 poäng. Du kan inte komplettera en inlämning för att få högre betyg.
 
 </body>
 
