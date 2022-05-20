@@ -77,6 +77,101 @@ class Project extends AbstractController
     }
 
     /**
+     * Reset tables ClimateChange, BNP, ClimateSNI and Temperature.
+     * Error for no parameter for entityManager, found no fitting parameter.
+     */
+    public function resetter(
+        $entityManager,
+    ): void {
+        $sni = $entityManager->getRepository(ClimateSNI::class)->findAll();
+        $climate = $entityManager->getRepository(ClimateChange::class)->findAll();
+        $temp = $entityManager->getRepository(Temperature::class)->findAll();
+        $bnp = $entityManager->getRepository(BNP::class)->findAll();
+
+        //Remove all rows in tables.
+        foreach ($sni as $entity) {
+            $entityManager->remove($entity);
+        }
+
+        foreach ($climate as $entity) {
+            $entityManager->remove($entity);
+        }
+
+        foreach ($temp as $entity) {
+            $entityManager->remove($entity);
+        }
+
+        foreach ($bnp as $entity) {
+            $entityManager->remove($entity);
+        }
+
+        //Telling Doctrine to save everything added to EntityManager.
+        $entityManager->flush();
+    }
+
+    /**
+     * Re-enter data from csv files using functions: sektion, sni, bnp, temp.
+     * All data from csv files are added to array to use in functions to tell
+     * Doctrine to potenially save.
+     * Flushes to execute changes.
+     * Error for no parameter for entityManager, found no fitting parameter.
+     */
+    public function adddata(
+        $entityManager,
+    ): void {
+        //The reason why phpstan error is still left for line 248, 236, 224 and 212
+        //is because I found no other way to read csv files without major error.
+        // I tried to fix the issue but no other way seems to work for me,
+        //with my nowledge so far with php.
+        $csvFile = file('../public/data/sektor.csv');
+        $data = [];
+        foreach ($csvFile as $line) {
+            $data[] = str_getcsv($line);
+        }
+
+        for ($z = 0; $z <= 8; $z++) {
+            $csv = $data[$z];
+            $result = $this->sektor($csv);
+            $entityManager->persist($result);
+        }
+
+        $csvFilesni = file('../public/data/sni.csv');
+        $data = [];
+        foreach ($csvFilesni as $line) {
+            $data[] = str_getcsv($line);
+        }
+
+        for ($z = 0; $z <= 9; $z++) {
+            $csv = $data[$z];
+            $result = $this->sni($csv);
+            $entityManager->persist($result);
+        }
+
+        $csvFiletemp = file('../public/data/temp.csv');
+        $data = [];
+        foreach ($csvFiletemp as $line) {
+            $data[] = str_getcsv($line);
+        }
+
+        for ($z = 0; $z <= 14; $z++) {
+            $csv = $data[$z];
+            $result = $this->temp($csv);
+            $entityManager->persist($result);
+        }
+
+        $csvFilebnp = file('../public/data/bnp.csv');
+        $data = [];
+        foreach ($csvFilebnp as $line) {
+            $data[] = str_getcsv($line);
+        }
+
+        $result = $this->bnp($data[0]);
+        $entityManager->persist($result);
+
+        $entityManager->flush();
+    }
+
+    /**
      * Functions to set values to object ClimateSNI before returning object
      * to add to table ClimateSNI in databases.
      * @param array<int, String> $csv
@@ -164,101 +259,6 @@ class Project extends AbstractController
      */
     public function about(): Response
     {
-        return $this->render('project/home.html.twig');
-    }
-
-    /**
-     * Reset tables ClimateChange, BNP, ClimateSNI and Temperature.
-     * Error for no parameter for entityManager, found no fitting parameter.
-     */
-    public function resetter(
-        $entityManager,
-    ): void {
-        $sni = $entityManager->getRepository(ClimateSNI::class)->findAll();
-        $climate = $entityManager->getRepository(ClimateChange::class)->findAll();
-        $temp = $entityManager->getRepository(Temperature::class)->findAll();
-        $bnp = $entityManager->getRepository(BNP::class)->findAll();
-
-        //Remove all rows in tables.
-        foreach ($sni as $entity) {
-            $entityManager->remove($entity);
-        }
-
-        foreach ($climate as $entity) {
-            $entityManager->remove($entity);
-        }
-
-        foreach ($temp as $entity) {
-            $entityManager->remove($entity);
-        }
-
-        foreach ($bnp as $entity) {
-            $entityManager->remove($entity);
-        }
-
-        //Telling Doctrine to save everything added to EntityManager.
-        $entityManager->flush();
-    }
-
-    /**
-     * Re-enter data from csv files using functions: sektion, sni, bnp, temp.
-     * All data from csv files are added to array to use in functions to tell
-     * Doctrine to potenially save.
-     * Flushes to execute changes.
-     * Error for no parameter for entityManager, found no fitting parameter.
-     */
-    public function adddata(
-        $entityManager,
-    ): void {
-        //The reason why phpstan error is still left for line 248, 236, 224 and 212
-        //is because I found no other way to read csv files without major error.
-        // I tried to fix the issue but no other way seems to work for me,
-        //with my nowledge so far with php. 
-        $csvFile = file('../public/data/sektor.csv');
-        $data = [];
-        foreach ($csvFile as $line) {
-            $data[] = str_getcsv($line);
-        }
-
-        for ($z = 0; $z <= 8; $z++) {
-            $csv = $data[$z];
-            $result = $this->sektor($csv);
-            $entityManager->persist($result);
-        }
-
-        $csvFilesni = file('../public/data/sni.csv');
-        $data = [];
-        foreach ($csvFilesni as $line) {
-            $data[] = str_getcsv($line);
-        }
-
-        for ($z = 0; $z <= 9; $z++) {
-            $csv = $data[$z];
-            $result = $this->sni($csv);
-            $entityManager->persist($result);
-        }
-
-        $csvFiletemp = file('../public/data/temp.csv');
-        $data = [];
-        foreach ($csvFiletemp as $line) {
-            $data[] = str_getcsv($line);
-        }
-
-        for ($z = 0; $z <= 14; $z++) {
-            $csv = $data[$z];
-            $result = $this->temp($csv);
-            $entityManager->persist($result);
-        }
-
-        $csvFilebnp = file('../public/data/bnp.csv');
-        $data = [];
-        foreach ($csvFilebnp as $line) {
-            $data[] = str_getcsv($line);
-        }
-
-        $result = $this->bnp($data[0]);
-        $entityManager->persist($result);
-
-        $entityManager->flush();
+        return $this->render('project/about.html.twig');
     }
 }

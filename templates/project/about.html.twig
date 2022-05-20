@@ -5,8 +5,61 @@
     <div class="content">
         <h2>Om projektet</h2>
         <br>
+        <p>
+        <div class="btn-group">
+            <a class="button" href="{{ path("reset") }}">Reset databasens innehåll</a>
+        </div>
+        <h4><b>Länkar:</b></h4>
+        <br>
+        <ul>
+            <li>
+                <a href="https://www.student.bth.se/~anbj21/dbwebb-kurser/mvc/me/report/docs/api/">PHPDOCS</a>
+            </li>
+            <li>
+                <a href="https://www.student.bth.se/~anbj21/dbwebb-kurser/mvc/me/report/docs/metrics/">PHPMETRICS</a>
+            </li>
+            <li>
+                <a href="https://github.com/annabeerg/mvc_report.git">Mitt GITHUB repo</a>
+            </li>
+            <li>
+                <a href="https://scrutinizer-ci.com/g/annabeerg/mvc_report/">Scrutinizer</a>
+            </li>
+        </ul>
+        <br>
+        <br>
+        <p>
+        Mitt projekt handlar om klimatfråga 13 i FN:s universiella klimatmål som ska uppfyllas innan år 2030. På så vis blir detta projekts fokus "Visualisera indikatorer för hållbarhet (sustainability)".
+        Klimatmål 13 handlar om att bekämpa klimatförändringen, genom data se hur situationen ser ut i dagsläget. Genom att läsa data kan man se trender och i vilken riktning situationen rör sig emot.
+        Genom att skapa en databas och samla data i fyra tabeller som handlar om området, data kring mål 13. Överlag hur temperatur är påverkad av ustläpp. Läsa mängd data som sektorer och näringsgrenar 
+        släpper ut per år, under en tidsperiod, år för år. Total mängd växthusgaser som släpps ut inom grenarna. Genom att sedan försöka visualisera datan genom procent och visualisering av procentmängd och stapeldiagram
+        försöka underläta för läsaren hur datan ser ut. Ibland kan det vara svårt att tolka ren data, på så vis kan ett försök till visualisering underlätta. 
+        <br>
+        <br>
+        Jag har strukturerat mitt projekt genom att som nämnt innan samla data och föra data i databasen i fyra tabeller genom data från csv filer. Tabellerna är BNP, ClimateSNI, ClimateChange och Temperature. Arbetet mot databsen sker genom
+        ORM och Doctrine. Genom Entity och Repository klasser, styrda från Controller klassen Project. Routen "/proj" tillhör klassen allclimate som genom tillhörande repository klass till tillhörande tabell genom funktionen findAll() returnerar
+        en array med data från tabellen som sedan presenteras i dem visuella tabellerna i home.html.twig. För att återställa databsens innehåll används routen "/proj/reset" tillhörande funktion reset som använder två andra klasser: resetter och adddata.
+        Funktionen resetter raderar data genom att hitta all data genom repository funktionen findAll och sedan använda entityManagers funktion remove(varje entity tillhörande tabellen per klass) genom en foreach loop som raderar alla entitys.
+        Sedan används entityManager funktionen flush för att spara alla ändringar sparade i entityManagern. Funktionen adddata gör resetters motsats, genom att läsa filerna med file() som läser filens innehåll till en array. Sedan för varje rad i arrayen
+        från csv filen använvänds den andra inbyggda funktionen str_getcsv så att varje strängen från csv filen till ännu en array med korrekt data i strängformat med varje cell som en sträng från strängen. På så vis skapas en array för varje rad, och läggs
+        läggs till i en stor array. För att sedan använda denna data ittereras arrayen i en for loop som skickar varje array i arrayen för att kalla på flera mindre funktioner sektor, bnp, sni och temp som sätter värden till entiryn. Objekt från varje entity returneras
+        och sparas med entityManager funktionen flush för att läggas till i vardera tabell i databasen. På så vis resettas databasens tabeller med ursprungliga datan från csv filerna.
+        Den största svårigheten var att lösa problemet med att kunna resetta databsens tabellers innehåll. Genom denna svårighet uppstod problemet att radera all data samt att kunna lägga till data från csv filer. 
+        Genom att läsa på om doctrine kunde jag lösa problem ett och sedan lösa problem två. Försökte använda league/csv, vilket jag inte fick att fungera. Den kunde inte hitta filen för att läsa datan. Men genom att använda dem inbyggda metoderna file() och str_getcsv
+        kunde problemet lösas relativt smidigt. Men svårigheten var att det tog tid att lösa. I övrigt tyckte jad att projektet hade en lagom svårighet passande kursen. 
+        <br>
+        <br>
+
+        <br>
+        <br>
+        Jag tycker att denna kurs har varit otroligt lärorik, ganska svår men vänligt rolig. Det har varit passande hastighet på tempot samt passande kursmaterial. Kul att utvecklas mer inom php som är ett språk som man hanterade när jag var nybörjare i detta program.
+        Jag är väldigt nöjd med denna kurs. Skulle absolut ge kursen 10/10 och kunna rekommendera den till andra.
+        </p>
   </div>
-    
+
+Din about-sida skall innehålla en summering där du berättar om projektets kodkvalitet. Berätta vilka eventuella åtgärder du gjort för att kvalitetssäkra projektet och hur du jobbat med kodkvaliteten och vilka verktyg du använt. Har du fokuserat på några speciella saker, verktyg eller metrics, så kan du berätta om dem.
+
+För varje krav du implementerat, dvs 1-3, 4, 5, 6, skriver du ett textstycke om ca 5-10 meningar där du beskriver hur du löste kravet. Poängsättningen tar sin start i din text så se till att skriva väl för att undvika poängavdrag. Missar du att skriva/dokumentera din lösning så blir det 0 poäng. Du kan inte komplettera en inlämning för att få högre betyg.
+
 </body>
 
 {% include 'footer.html.twig' %}
