@@ -61,8 +61,9 @@ class Project extends AbstractController
      * name="reset",
      * methods={"GET","HEAD"}
      * )
-     * Reset tables ClimateChange, BNP, ClimateSNI and Temperature.
-     * Re-enter data from csv files using functions: sektion, sni, bnp, temp.
+     * Reset tables ClimateChange, BNP, ClimateSNI and Temperature using
+     * method resetter.
+     * Re-enter data from csv files using methods: sektion, sni, bnp, temp.
      */
     public function reset(
         ManagerRegistry $doctrine,
