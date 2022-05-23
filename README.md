@@ -1,5 +1,6 @@
 # Report repo
-Detta repo innhehåller en rapport och sammanfattning av kursen Objektorienterad PHP, med ett slutligt projekt som tentamen för kursen. Projektet är inriktat på ämnet klimatförändring.
+Detta repo innhehåller en rapport och sammanfattning av kursen Objektorienterad PHP, med ett slutligt projekt som tentamen för kursen.
+Projektet är inriktat mot ämnet klimatförändring mål 13.
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/annabeerg/mvc_report/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/annabeerg/mvc_report/?branch=main)
 
